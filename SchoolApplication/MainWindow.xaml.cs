@@ -23,6 +23,9 @@ namespace SchoolApplication
         public MainWindow()
         {
             InitializeComponent();
+
+            FrameApp.frmObj = MainFrame;
+            MainFrame.Navigate(new RegistrationPage());
         }
     }
 }
