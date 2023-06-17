@@ -9,6 +9,21 @@
       Title="AdminMenuPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Button Name="BtnRedStudent" Grid.Column="0" Grid.Row="0" Width="190" Height="40" Content="Редактирование пользователя" />
+        <Button Name="BtnRedTeacher" Grid.Column="0" Grid.Row="1" Width="170" Height="40" Content="Редактирование учителя" />
+        <Button Name="BtnRedLesson" Grid.Column="0" Grid.Row="2" Width="170" Height="40" Content="Редактирование расписания" />
+        <Button Name="BtnRedSchoolNews" Grid.Column="1" Grid.Row="0" Width="200" Height="40" Content="Редактирование новостей школы" />
+        <Button Name="BtnExit" Grid.Column="1" Grid.Row="1" Width="130" Height="40" Content="Выход" />
     </Grid>
 </Page>
