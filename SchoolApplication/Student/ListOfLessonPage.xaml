@@ -9,6 +9,18 @@
       Title="ListOfLessonPage">
 
     <Grid>
-        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock Width="100" Height="100">Дата рождения:</TextBlock>
+            <DatePicker Width="100" Height="100" Name="BirthPicker"></DatePicker>
+        </StackPanel>
+
+        <DataGrid HorizontalAlignment="Left" Height="141" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="733">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Width="*"/>
+                <DataGridTextColumn Header="Время" Width="0.5*"/>
+                <DataGridTextColumn Header="Общее время" Width="0.5*"/>
+                <DataGridTextColumn Header="Моё место" Width="0.3*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

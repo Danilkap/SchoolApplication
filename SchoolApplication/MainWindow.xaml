@@ -7,6 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Background="#FFC72F4D" Orientation="Vertical" Grid.ColumnSpan="2">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock FontSize="30" 
+                           FontWeight="Bold"
+                           Foreground="White">MARATHON SKILLS 2016</TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <Frame x:Name="MainFrame"
+               Grid.Row="1" 
+               NavigationUIVisibility="Hidden" Grid.ColumnSpan="2"/>
+
+        <StackPanel Grid.Row="2" Background="#FF94E644" Grid.ColumnSpan="2">
+            <TextBlock 
+                       Foreground="#FF2B2B2B" 
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       VerticalAlignment="Center"
+                       FontWeight="DemiBold"></TextBlock>
+        </StackPanel>
     </Grid>
 </Window>

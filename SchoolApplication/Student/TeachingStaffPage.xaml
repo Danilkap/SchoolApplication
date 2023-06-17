@@ -9,6 +9,13 @@
       Title="TeachingStaffPage">
 
     <Grid>
-        
+        <DataGrid HorizontalAlignment="Left" Height="141" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="733">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Width="*"/>
+                <DataGridTextColumn Header="Время" Width="0.5*"/>
+                <DataGridTextColumn Header="Общее время" Width="0.5*"/>
+                <DataGridTextColumn Header="Моё место" Width="0.3*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
