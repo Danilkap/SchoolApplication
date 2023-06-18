@@ -20,10 +20,10 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Button Name="BtnRedStudent" Grid.Column="0" Grid.Row="0" Width="190" Height="40" Content="Редактирование пользователя" />
-        <Button Name="BtnRedTeacher" Grid.Column="0" Grid.Row="1" Width="170" Height="40" Content="Редактирование учителя" />
-        <Button Name="BtnRedLesson" Grid.Column="0" Grid.Row="2" Width="170" Height="40" Content="Редактирование расписания" />
-        <Button Name="BtnRedSchoolNews" Grid.Column="1" Grid.Row="0" Width="200" Height="40" Content="Редактирование новостей школы" />
-        <Button Name="BtnExit" Grid.Column="1" Grid.Row="1" Width="130" Height="40" Content="Выход" />
+        <Button Name="BtnRedStudent" Grid.Column="0" Grid.Row="0" Width="190" Height="40" Content="Редактирование пользователя" Click="BtnRedStudent_Click"/>
+        <Button Name="BtnRedTeacher" Grid.Column="0" Grid.Row="1" Width="170" Height="40" Content="Редактирование учителя" Click="BtnRedTeacher_Click"/>
+        <Button Name="BtnRedLesson" Grid.Column="0" Grid.Row="2" Width="170" Height="40" Content="Редактирование расписания" Click="BtnRedLesson_Click"/>
+        <Button Name="BtnRedSchoolNews" Grid.Column="1" Grid.Row="0" Width="200" Height="40" Content="Редактирование новостей школы" Click="BtnRedSchoolNews_Click"/>
+        <Button Name="BtnExit" Grid.Column="1" Grid.Row="1" Width="130" Height="40" Content="Выйти из аккаунта" Click="BtnExit_Click"/>
     </Grid>
 </Page>

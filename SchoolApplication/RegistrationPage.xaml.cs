@@ -28,6 +28,11 @@ namespace SchoolApplication
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.Navigate( new Student.StudentMenuPage());
+
+            if (TxbLogin.Text == "fff" || PsbPassword.Password == "123")
+            {
+                FrameApp.frmObj.Navigate(new Admin.AdminMenuPage());
+            }
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)

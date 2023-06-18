@@ -24,5 +24,10 @@ namespace SchoolApplication.Admin
         {
             InitializeComponent();
         }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.GoBack();
+        }
     }
 }

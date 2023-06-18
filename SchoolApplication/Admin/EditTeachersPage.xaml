@@ -9,19 +9,32 @@
       Title="EditTeachersPage">
 
     <Grid>
-        <TextBlock Foreground="Black"
-                   FontSize="25"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top">Информация о Marathon Skills 2016</TextBlock>
+        <Button Name="BtnBack"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="100"
+                Height="40"
+                Content="Назад"
+                FontSize="15"
+                Margin="20 40 0 0"
+                Click="BtnBack_Click"></Button>
 
-        <DataGrid HorizontalAlignment="Left" Height="141" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="733">
+        <StackPanel>
+            <TextBlock Margin="5"
+                   Foreground="Gray"
+                   FontSize="25"
+                   FontWeight="Bold"                      
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top">Расписание уроков
+            </TextBlock>
+        </StackPanel>
+
+        <DataGrid HorizontalAlignment="Center" Height="300" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Width="*"/>
-                <DataGridTextColumn Header="Время" Width="0.5*"/>
-                <DataGridTextColumn Header="Общее время" Width="0.5*"/>
-                <DataGridTextColumn Header="Моё место" Width="0.3*"/>
+                <DataGridTextColumn Header="Название" Width="0.5*"/>
+                <DataGridTextColumn Header="Текст" Width="*"/>
+                <DataGridTextColumn Header="Фотография" Width="0.7*"/>
             </DataGrid.Columns>
         </DataGrid>
-
     </Grid>
 </Page>
