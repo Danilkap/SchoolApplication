@@ -13,14 +13,7 @@
             <TextBlock HorizontalAlignment="Center"
                        FontWeight="Bold"
                    FontSize="25"
-                   Foreground="Gray">Форма авторизации</TextBlock>
-
-            <TextBlock Foreground="Black"
-                   FontSize="20"
-                   TextWrapping="Wrap"
-                   HorizontalAlignment="Center"
-                   Width="700"
-                   Margin="20">Пожалуйста, авторизируйтесь в системе, используя ваш адрес электронной почты и пароль.</TextBlock>
+                   Foreground="Gray">Авторизация</TextBlock>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center"
@@ -30,9 +23,10 @@
             <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Center" 
                         Margin="5">
-                <TextBlock Text="Введите логин:" Margin="5" 
+                <TextBlock Text="Введите логин:" Margin="0 0 10 0" 
                            FontSize="25"/>
-                <TextBox Name="TxbLogin"
+                <TextBox Margin="10 0 0 0"
+                         Name="TxbLogin"
                          Width="300"
                          Height="40"
                          />
@@ -51,18 +45,20 @@
 
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Name="BtnLogin" 
-                        Content="Login" 
-                        Width="120"
+                        Content="Авторизоваться" 
+                        Width="170"
                         Height="40"
                         Margin="5"
-                        FontSize="20"/>
+                        FontSize="20"
+                        Click="BtnLogin_Click"/>
 
-                <Button Name="BtnCancel" 
+                <Button Name="BtnExit" 
                         Width="120"
                         Height="40"
                         Margin="5"
-                        Content="Cancel"
-                        FontSize="20"/>
+                        Content="Выход"
+                        FontSize="20"
+                        Click="BtnExit_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>
