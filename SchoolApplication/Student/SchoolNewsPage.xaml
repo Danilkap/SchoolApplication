@@ -9,69 +9,32 @@
       Title="SchoolNewsPage">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="350"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
+        <Button Name="BtnExit"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="100"
+                Height="40"
+                Content="Назад"
+                FontSize="15"
+                Margin="20 40 0 0"
+                Click="BtnExit_Click"></Button>
 
-        <TextBlock Grid.Row="0" 
-                   Grid.ColumnSpan="2"
-                   Foreground="Black"
+        <StackPanel>
+            <TextBlock Margin="5"
+                   Foreground="Gray"
                    FontSize="25"
+                   FontWeight="Bold"                      
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Center">Информация о Marathon Skills 2016</TextBlock>
-
-        <StackPanel Grid.Row="1"
-                    Grid.Column="1"
-                    Orientation="Vertical">
-
-            <TextBlock TextWrapping="Wrap"
-                       FontSize="20"
-                       Foreground="Gray">Информация о Навыках Марафона 2016 пойдёт сюда. Информация  может покрыть расположение, время, расстояние, рекордные времена, достопримечательности, и т.д.</TextBlock>
-
-            <TextBlock></TextBlock>
-
-            <TextBlock TextWrapping="Wrap"
-                       FontSize="20"
-                       Foreground="Gray">События:
-                        <LineBreak/>- Программа "Самба" Полный Марафон начнется в Руа-Ду-Американо в 6 утра.
-                       <LineBreak/>- Программа "Джонго" Полумарафон начнет в 7 утра Бегуны будут стартовать от недалеко от пересечения улицы Руа Ciniciata и Авенида.
-                       <LineBreak/>- Программа "Капоэйра" в 5 км забег для новичков начнется в 15 часов Наши новички побегут от Мемориала Унинове.
-                       <LineBreak/>Спасибо всем волонтерам, которые будут помогать нам проводить марафон!</TextBlock>
+                   VerticalAlignment="Top">Новости школы
+            </TextBlock>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical"
-                    Grid.Row="1"
-                    Grid.Column="0">
-            <Button Name="MarathonMapBtn"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    Margin="5"
-                    Width="250"
-                    Height="150"
-                    HorizontalContentAlignment="Center">
-                <TextBlock>Карта марафона <LineBreak/>
-                               (Нажмите чтобы открыть <LineBreak/> 
-                               интерактивную карту)</TextBlock>
-            </Button>
-
-            <StackPanel Orientation="Horizontal" 
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        HorizontalAlignment="Center">
-
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" 
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        HorizontalAlignment="Center">
-                
-            </StackPanel>
-        </StackPanel>
+        <DataGrid HorizontalAlignment="Center" Height="360" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="775" Margin="5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Width="0.5*"/>
+                <DataGridTextColumn Header="Текст" Width="*"/>
+                <DataGridTextColumn Header="Фотография" Width="0.5*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

@@ -24,5 +24,25 @@ namespace SchoolApplication.Student
         {
             InitializeComponent();
         }
+
+        private void BtnListOfLesson_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.Navigate(new Student.ListOfLessonPage());
+        }
+
+        private void BtnSchoolNews_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.Navigate(new Student.SchoolNewsPage());
+        }
+
+        private void BtnTeasherStaff_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.Navigate(new Student.TeachingStaffPage());
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.GoBack();
+        }
     }
 }

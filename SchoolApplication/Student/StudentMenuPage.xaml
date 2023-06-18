@@ -32,8 +32,8 @@
                     VerticalAlignment="Top"
                     Grid.Row="1" Margin="0 0 0 0"
                     Height="200">
-                                        
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0" Orientation="Horizontal">
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0" Orientation="Horizontal">
                 <Button Name="BtnPhoto" 
                         Content="Выбрать фотографию" 
                         Width="180"
@@ -45,9 +45,24 @@
                HorizontalAlignment="Right"
                Name="ImgPhoto"></Image>
             </StackPanel>
-                               
-            
-          
+
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Grid.Row="1" Margin="0 0 0 0"
+                    Height="200" Width="350">
+
+            <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Grid.Row="1" Margin="0 0 0 0"
+                    Height="200" Width="300">
+                <Button Name="BtnListOfLesson" Width="205" Height="40" Content="Расписание уроков" FontSize="15" Margin="5" Click="BtnListOfLesson_Click"></Button>
+                <Button Name="BtnSchoolNews" Width="205" Height="40" Content="Школьные новости" FontSize="15" Margin="5" Click="BtnSchoolNews_Click"></Button>
+                <Button Name="BtnTeasherStaff" Width="205" Height="40" Content="Преподавательский состав" FontSize="15" Margin="5" Click="BtnTeasherStaff_Click"></Button>
+                
+            </StackPanel>
+
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Left"
@@ -60,7 +75,7 @@
             <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Left"
                         Margin="5">
-                <TextBlock Text="ФИО:" Margin="7" 
+                <TextBlock Text="ФИО:" Margin="5 0 105 0" 
                            FontSize="20"/>
                 <TextBox Name="TxbName"
                          FontSize="25"
@@ -83,8 +98,8 @@
 
             <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Left" 
-                        Margin="5 0 -75 10">
-                <TextBlock Text="Email:" Margin="7" 
+                        Margin="5">
+                <TextBlock Text="Email:" Margin="5 0 104 0" 
                            FontSize="20"/>
                 <TextBox Name="TxbEmail"
                          FontSize="25"
@@ -95,10 +110,10 @@
             
             <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Left" 
-                        Margin="5 0 -40 10">
-                <TextBlock Text="Фамилия:" Margin="7" 
+                        Margin="5">
+                <TextBlock Text="Логин:" Margin="5 0 94 0" 
                            FontSize="20"/>
-                <TextBox Name="TxbSurname"
+                <TextBox Name="TxbLogin"
                          FontSize="25"
                          Width="240"
                          Height="40"
@@ -107,16 +122,18 @@
 
             <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Left" 
-                        Margin="5 0 7 10">
-                <TextBlock Text="Повторите пароль:"
-                           Margin="7"
+                        Margin="5">
+                <TextBlock Text="Пароль:"
+                           Margin="5 0 95 0"
                            FontSize="16"/>
-                <PasswordBox Name="PsbConfirmationPassword"
+                <PasswordBox Name="PsbPassword"
                              Margin="0 0 7 0"
                              FontSize="25"
                              Width="242"
                              Height="40"/>
             </StackPanel>
+
+            <Button Name="BtnExit" Width="175" Height="40" Content="Выйти из аккаунта" FontSize="15" Margin="5 40 0 0" Click="BtnExit_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>
