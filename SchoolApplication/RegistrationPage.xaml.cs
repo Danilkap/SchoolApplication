@@ -26,8 +26,18 @@ namespace SchoolApplication
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            FrameApp.frmObj.Navigate( new Student.StudentMenuPage());
+        {          
+            if (DbConnect.entObj.User.Count(x => x.UserName == TxbLogin.Text) > 0 )
+            {
+               FrameApp.frmObj.Navigate( new Student.StudentMenuPage()); 
+               return;
+            }else
+             {
+               MessageBox.Show("Данные введены неверно!",
+                                "Уведомление",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+             }
 
             if (TxbLogin.Text == "fff" || PsbPassword.Password == "123")
             {
