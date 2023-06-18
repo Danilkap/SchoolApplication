@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SchoolApplication.AppFiles;
+using System.Windows.Threading;
 
 namespace SchoolApplication
 {
@@ -23,6 +25,8 @@ namespace SchoolApplication
         public MainWindow()
         {
             InitializeComponent();
+
+            DbConnect.entObj = new SchoolApplicationEntities();
 
             FrameApp.frmObj = MainFrame;
             MainFrame.Navigate(new RegistrationPage());

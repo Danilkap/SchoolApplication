@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SchoolApplication.AppFiles;
 
 namespace SchoolApplication
 {
@@ -27,10 +28,10 @@ namespace SchoolApplication
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {          
-            if (DbConnect.entObj.User.Count(x => x.UserName == TxbLogin.Text) > 0 )
+            if (DbConnect.entObj.User.Count(x => x.Login == TxbLogin.Text) > 0)
             {
                FrameApp.frmObj.Navigate( new Student.StudentMenuPage()); 
-               return;
+
             }else
              {
                MessageBox.Show("Данные введены неверно!",
