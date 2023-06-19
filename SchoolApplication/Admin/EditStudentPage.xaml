@@ -9,27 +9,47 @@
       Title="EditStudentPage">
 
     <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        
         <Button Name="BtnBack"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="100"
                 Height="40"
+                Grid.Row="0"
                 Content="Назад"
                 FontSize="15"
                 Margin="20 40 0 0"
                 Click="BtnBack_Click"></Button>
 
+        <Button Name="BtnRefresh"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Width="100"
+                Height="40"
+                Content="Обновить"
+                Grid.Row="0"
+                FontSize="15"
+                Margin="0 40 20 0"
+                Click="BtnRefresh_Click"></Button>
+
         <StackPanel>
             <TextBlock Margin="5"
                    Foreground="Gray"
                    FontSize="25"
-                   FontWeight="Bold"                      
+                   FontWeight="Bold"
+                   Grid.Row="0"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Top">Расписание уроков
+                   VerticalAlignment="Top">Редактирование учеников
             </TextBlock>
         </StackPanel>
 
-        <DataGrid HorizontalAlignment="Center" Name="DgrEditStudent" Height="300" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
+        <DataGrid HorizontalAlignment="Center" Name="DgrEditStudent" Grid.Row="1" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Binding="{Binding UserName}" Width="0.8*"/>
                 <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateOfBirth}" Width="0.6*"/>
@@ -37,6 +57,7 @@
                 <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="0.5*"/>
                 <DataGridTextColumn Header="Пароль" Binding="{Binding Password}" Width="0.5*"/>
                 <DataGridTextColumn Header="Класс" Binding="{Binding ClassId}" Width="0.3*"/>
+                
                 <DataGridTemplateColumn Width="*" Header="Фотография">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -44,7 +65,32 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать"
+                                    Name="BtnEdit"
+                                    Click="BtnEdit_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <Button Name="BtnAdd"
+                Grid.Row="2" 
+                HorizontalAlignment="Left"
+                Width="100"
+                Height="40"
+                Margin="20 0 0 0"
+                Click="BtnAdd_Click">Добавить</Button>
+        <Button Name="BtnDelete"
+                Grid.Row="2"
+                Width="100"
+                Height="40"
+                Margin="0 0 20 0"
+                HorizontalAlignment="Right"
+                Click="BtnDelete_Click">Удалить</Button>
     </Grid>
 </Page>
