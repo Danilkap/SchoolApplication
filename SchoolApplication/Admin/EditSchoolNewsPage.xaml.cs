@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolApplication.AppFiles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,17 +40,37 @@ namespace SchoolApplication.Admin
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
-
+            DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+            DgrEditNews.ItemsSource = DbConnect.entObj.News.ToList();
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameApp.frmObj.Navigate(new Admin.AddSchoolNewsPage());
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            var newsRemoving = DgrEditNews.SelectedItems.Cast<News>().ToList();
+            try
+            {
+                string message = "Вы хотите удалить выбранные блюда?";
+                var result = MessageBox.Show(message,
+                                            "Уведомление",
+                                            MessageBoxButton.YesNo,
+                                            MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)
+                {
+                    DbConnect.entObj.News.RemoveRange(newsRemoving);
+                    DbConnect.entObj.SaveChanges();
 
+                    DgrEditNews.ItemsSource = DbConnect.entObj.News.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
