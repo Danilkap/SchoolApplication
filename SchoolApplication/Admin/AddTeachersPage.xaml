@@ -1,0 +1,50 @@
+﻿<Page x:Class="SchoolApplication.Admin.AddTeachersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SchoolApplication.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddTeachersPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Margin="5">ФИО:</TextBlock>
+                <TextBox Name="TxbName"
+                         Margin="5"
+                         Width="200"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Margin="5">Дата рождения:</TextBlock>
+                <TextBox Name="TxbDateOfBirth"
+                         Margin="5"
+                         Width="200"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Margin="5">Изображение:</TextBlock>
+                <Button Name="BtnAddImage" 
+                        Width="200"
+                        Margin="5"
+                        Click="BtnAddImage_Click">Выбрать</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="BtnAddProduct"
+                    Width="150"
+                    Margin="5"
+                    Click="BtnAddProduct_Click">Добавить</Button>
+            <Button Name="BtnBack"
+                    Width="150"
+                    Margin="5"
+                    Click="BtnBack_Click">Назад</Button>
+            </StackPanel>
+        </StackPanel>
+
+        <Image Width="350" 
+               HorizontalAlignment="Right"
+               Name="ImgDish"></Image>
+    </Grid>
+</Page>
