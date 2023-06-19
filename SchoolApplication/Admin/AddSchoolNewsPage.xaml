@@ -12,14 +12,14 @@
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="250" Margin="5">Дата:</TextBlock>
-                <TextBox Name="TxbName"
+                <TextBox Name="TxbDate"
                          Margin="5"
                          Width="200"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="250" Margin="5">Название:</TextBlock>
-                <TextBox Name="TxbDate"
+                <TextBox Name="TxbName"
                          Margin="5"
                          Width="200"></TextBox>
             </StackPanel>
@@ -52,6 +52,6 @@
 
         <Image Width="350" 
                HorizontalAlignment="Right"
-               Name="ImgDish"></Image>
+               Name="ImgNews"></Image>
     </Grid>
 </Page>

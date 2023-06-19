@@ -45,6 +45,6 @@
 
         <Image Width="350" 
                HorizontalAlignment="Right"
-               Name="ImgDish"></Image>
+               Name="ImgTeacher"></Image>
     </Grid>
 </Page>
