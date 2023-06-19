@@ -23,6 +23,8 @@ namespace SchoolApplication.Admin
         public EditTeachersPage()
         {
             InitializeComponent();
+
+            DgrEditTeachers.ItemsSource = DbConnect.entObj.Teacher.ToList();
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

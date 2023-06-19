@@ -23,6 +23,8 @@ namespace SchoolApplication.Student
         public SchoolNewsPage()
         {
             InitializeComponent();
+
+            DgrNews.ItemsSource = DbConnect.entObj.News.ToList();
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)

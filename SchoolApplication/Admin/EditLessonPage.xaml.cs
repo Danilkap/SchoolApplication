@@ -23,6 +23,8 @@ namespace SchoolApplication.Admin
         public EditLessonSchedulePage()
         {
             InitializeComponent();
+
+            DgrEditLessons.ItemsSource = DbConnect.entObj.Lesson.ToList();
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)

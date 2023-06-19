@@ -29,11 +29,21 @@
             </TextBlock>
         </StackPanel>
 
-        <DataGrid HorizontalAlignment="Center" Height="300" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
+        <DataGrid HorizontalAlignment="Center" Name="DgrEditStudent" Height="300" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Width="0.5*"/>
-                <DataGridTextColumn Header="Текст" Width="*"/>
-                <DataGridTextColumn Header="Фотография" Width="0.7*"/>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding UserName}" Width="0.8*"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateOfBirth}" Width="0.6*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="0.5*"/>
+                <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="0.5*"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}" Width="0.5*"/>
+                <DataGridTextColumn Header="Класс" Binding="{Binding ClassId}" Width="0.3*"/>
+                <DataGridTemplateColumn Width="*" Header="Фотография">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Image}"></Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -34,11 +34,11 @@
             <DatePicker Width="100" Name="BirthPicker"></DatePicker>
         </StackPanel>
 
-        <DataGrid HorizontalAlignment="Center" Height="300" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
+        <DataGrid HorizontalAlignment="Center" Name="DgrLessons" Height="300" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Width="*"/>
-                <DataGridTextColumn Header="Время" Width="0.5*"/>
-                <DataGridTextColumn Header="Преподаватель" Width="0.5*"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding LessonName}"  Width="*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="0.5*"/>
+                <DataGridTextColumn Header="Преподаватель" Binding="{Binding TeacherId}" Width="0.8*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

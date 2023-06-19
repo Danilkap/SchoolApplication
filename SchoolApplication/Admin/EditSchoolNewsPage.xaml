@@ -29,11 +29,19 @@
             </TextBlock>
         </StackPanel>
 
-        <DataGrid HorizontalAlignment="Center" Height="300" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
+        <DataGrid HorizontalAlignment="Center" Name="DgrEditNews" Height="360" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="775" Margin="5">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Width="0.5*"/>
-                <DataGridTextColumn Header="Текст" Width="*"/>
-                <DataGridTextColumn Header="Фотография" Width="0.7*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="0.4*"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding NameNews}" Width="0.6*"/>
+                <DataGridTextColumn Header="Текст" Binding="{Binding Text}" Width="*"/>
+
+                <DataGridTemplateColumn Width="0.8*" Header="Фотография">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Image}"></Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -23,6 +23,8 @@ namespace SchoolApplication.Admin
         public EditSchoolNewsPage()
         {
             InitializeComponent();
+
+            DgrEditNews.ItemsSource = DbConnect.entObj.News.ToList();
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

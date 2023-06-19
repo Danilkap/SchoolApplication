@@ -23,6 +23,8 @@ namespace SchoolApplication.Student
         public ListOfLessonPage()
         {
             InitializeComponent();
+
+            DgrLessons.ItemsSource = DbConnect.entObj.Lesson.ToList();
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
