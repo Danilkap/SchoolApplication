@@ -51,7 +51,6 @@
             <DataGrid HorizontalAlignment="Center" Name="DgrEditLessons" Grid.Row="1" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding LessonName}"  Width="*"/>
-                <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="0.5*"/>
                 <DataGridTextColumn Header="Преподаватель" Binding="{Binding TeacherId}" Width="0.8*"/>
 
                 <DataGridTemplateColumn Width="auto">

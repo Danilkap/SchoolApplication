@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SchoolApplication.AppFiles;
 
 namespace SchoolApplication.Student
 {
@@ -20,6 +21,9 @@ namespace SchoolApplication.Student
     /// </summary>
     public partial class StudentMenuPage : Page
     {
+        public object Left { get; internal set; }
+        public object Top { get; internal set; }
+
         public StudentMenuPage()
         {
             InitializeComponent();
@@ -43,6 +47,11 @@ namespace SchoolApplication.Student
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.GoBack();
+        }
+
+        internal void Show()
+        {
+            throw new NotImplementedException();
         }
     }
 }

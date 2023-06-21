@@ -1,4 +1,5 @@
-﻿using SchoolApplication.AppFiles;
+﻿using Microsoft.Data.Sqlite;
+using SchoolApplication.AppFiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace SchoolApplication.Admin
             InitializeComponent();
 
             DgrEditNews.ItemsSource = DbConnect.entObj.News.ToList();
+          
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -75,7 +77,7 @@ namespace SchoolApplication.Admin
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameApp.frmObj.Navigate(new Admin.RedSchoolNewsPage());
         }
     }
 }

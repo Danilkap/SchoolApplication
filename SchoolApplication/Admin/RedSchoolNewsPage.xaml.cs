@@ -1,4 +1,5 @@
-﻿using SchoolApplication.AppFiles;
+﻿using Microsoft.Data.Sqlite;
+using SchoolApplication.AppFiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,23 +18,23 @@ using System.Windows.Shapes;
 namespace SchoolApplication.Admin
 {
     /// <summary>
-    /// Логика взаимодействия для AddLessonPage.xaml
+    /// Логика взаимодействия для RedSchoolNewsPage.xaml
     /// </summary>
-    public partial class AddLessonPage : Page
+    public partial class RedSchoolNewsPage : Page
     {
-        public AddLessonPage()
+        public RedSchoolNewsPage()
         {
             InitializeComponent();
         }
 
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        private void BtnAddImage_Click(object sender, RoutedEventArgs e)
         {
-            FrameApp.frmObj.GoBack();
+
         }
 
-        private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
+        private void BtnRedProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (DbConnect.entObj.Lesson.Count(x => x.LessonName == TxbName.Text) > 0)
+            if (DbConnect.entObj.News.Count(x => x.NameNews == TxbName.Text) > 0)
             {
                 MessageBox.Show("Такое пользователь уже есть!",
                                 "Уведомление",
@@ -41,8 +42,9 @@ namespace SchoolApplication.Admin
                                 MessageBoxImage.Information);
                 return;
             }
-            else if (TxbName.Text == null | TxbName.Text.Trim() == "" |                    
-                     TxbTeacher.Text == null | TxbTeacher.Text.Trim() == "")
+            else if (TxbDate.Text == null | TxbDate.Text.Trim() == "" |
+                     TxbName.Text == null | TxbName.Text.Trim() == "" |
+                     TxbText.Text == null | TxbText.Text.Trim() == "")
             {
                 MessageBox.Show("Заполните все поля!",
                                 "Уведомление",
@@ -53,13 +55,17 @@ namespace SchoolApplication.Admin
             {
                 try
                 {
-                    Lesson lessonObj = new Lesson()
+                  int num = Convert.ToInt32(TxbNewsId.Text);
+                  var dRow = DbConnect.entObj.News.Where(w => w.NewsId == num).FirstOrDefault();
+                    News newsObj = new News()
                     {
-                        LessonName = TxbName.Text,
-                        TeacherId = Convert.ToInt32(TxbTeacher.Text)
+                        NameNews = TxbName.Text,
+                        Date = Convert.ToDateTime(TxbDate.Text),
+                        Text = TxbText.Text,
+                        Image = ImgNews.Source.ToString()
                     };
 
-                    DbConnect.entObj.Lesson.Add(lessonObj);
+                    DbConnect.entObj.News.Remove(newsObj);
                     DbConnect.entObj.SaveChanges();
 
                     MessageBox.Show("Блюдо создано",
@@ -77,6 +83,11 @@ namespace SchoolApplication.Admin
                                     MessageBoxImage.Warning);
                 }
             }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

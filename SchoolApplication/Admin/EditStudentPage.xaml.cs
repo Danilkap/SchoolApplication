@@ -72,5 +72,10 @@ namespace SchoolApplication.Admin
         {
             FrameApp.frmObj.Navigate(new Admin.AddStudentPage());
         }
+
+        private void BtnEdit_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

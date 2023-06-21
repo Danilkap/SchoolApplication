@@ -18,6 +18,7 @@ namespace SchoolApplication.AppFiles
         public Teacher()
         {
             this.Class = new HashSet<Class>();
+            this.Lesson = new HashSet<Lesson>();
         }
     
         public int TeacherId { get; set; }
@@ -27,5 +28,7 @@ namespace SchoolApplication.AppFiles
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Class> Class { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lesson> Lesson { get; set; }
     }
 }

@@ -18,13 +18,6 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Width="250" Margin="5">Дата:</TextBlock>
-                <TextBox Name="TxbDate"
-                         Margin="5"
-                         Width="200"></TextBox>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
                 <TextBlock Width="250" Margin="5">Учитель:</TextBlock>
                 <TextBox Name="TxbTeacher"
                          Margin="5"

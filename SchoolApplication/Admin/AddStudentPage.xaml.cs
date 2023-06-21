@@ -65,8 +65,7 @@ namespace SchoolApplication.Admin
                         Email = TxbEmail.Text,
                         Login = TxbLogin.Text,
                         Password = TxbPassword.Text,
-                        ClassId = Convert.ToInt32(TxbClass.Text),
-                        Image = ImgStudent.Source.ToString()
+                        ClassId = Convert.ToInt32(TxbClass.Text)                       
                     };
 
                     DbConnect.entObj.User.Add(userObj);
@@ -91,15 +90,7 @@ namespace SchoolApplication.Admin
 
         private void BtnAddImage_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files|*.bmp;*.jpg;*.jpeg;*png;*tif|All files|*.*";
-            openFileDialog.FilterIndex = 1;
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                Uri imageUri = new Uri(openFileDialog.FileName);
-                ImgStudent.Source = new BitmapImage(imageUri);
-            }
+            
         }
     }
 }

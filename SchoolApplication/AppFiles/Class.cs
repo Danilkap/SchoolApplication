@@ -23,9 +23,7 @@ namespace SchoolApplication.AppFiles
         public int ClassId { get; set; }
         public string ClassName { get; set; }
         public int TeacherId { get; set; }
-        public int LessonId { get; set; }
     
-        public virtual Lesson Lesson { get; set; }
         public virtual Teacher Teacher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> User { get; set; }

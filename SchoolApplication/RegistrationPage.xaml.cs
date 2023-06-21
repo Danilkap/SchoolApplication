@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 using SchoolApplication.AppFiles;
 
 namespace SchoolApplication
@@ -21,16 +23,19 @@ namespace SchoolApplication
     /// </summary>
     public partial class RegistrationPage : Page
     {
+
         public RegistrationPage()
         {
             InitializeComponent();
+
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
-        {          
+        {
+
             if (DbConnect.entObj.User.Count(x => x.Login == TxbLogin.Text) > 0)
             {
-               FrameApp.frmObj.Navigate( new Student.StudentMenuPage()); 
+                FrameApp.frmObj.Navigate( new Student.StudentMenuPage()); 
 
             }else
              {
@@ -44,6 +49,11 @@ namespace SchoolApplication
             {
                 FrameApp.frmObj.Navigate(new Admin.AdminMenuPage());
             }
+        }
+
+        private void Hide()
+        {
+            throw new NotImplementedException();
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)

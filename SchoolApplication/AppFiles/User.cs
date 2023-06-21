@@ -20,7 +20,6 @@ namespace SchoolApplication.AppFiles
         public string Email { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public string Image { get; set; }
         public int RoleId { get; set; }
         public int ClassId { get; set; }
     

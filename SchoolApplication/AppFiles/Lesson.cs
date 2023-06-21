@@ -14,18 +14,10 @@ namespace SchoolApplication.AppFiles
     
     public partial class Lesson
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Lesson()
-        {
-            this.Class = new HashSet<Class>();
-        }
-    
         public int LessonId { get; set; }
         public string LessonName { get; set; }
-        public System.DateTime Date { get; set; }
         public int TeacherId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Class> Class { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }
