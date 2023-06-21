@@ -122,8 +122,17 @@
     <Compile Include="Admin\AddTeachersPage.xaml.cs">
       <DependentUpon>AddTeachersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Admin\RedLessonPage.xaml.cs">
+      <DependentUpon>RedLessonPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin\RedSchoolNewsPage.xaml.cs">
       <DependentUpon>RedSchoolNewsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RedStudentPage.xaml.cs">
+      <DependentUpon>RedStudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RedTeachersPage.xaml.cs">
+      <DependentUpon>RedTeachersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppFiles\Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -214,7 +223,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Admin\RedLessonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin\RedSchoolNewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\RedStudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\RedTeachersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

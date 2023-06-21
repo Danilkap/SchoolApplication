@@ -31,23 +31,15 @@ namespace SchoolApplication.Admin
         {
             FrameApp.frmObj.GoBack();
         }
-
-        private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
+       
+        private void BtnAddStudent_Click(object sender, RoutedEventArgs e)
         {
-            if (DbConnect.entObj.News.Count(x => x.NameNews == TxbName.Text) > 0)
-            {
-                MessageBox.Show("Такое пользователь уже есть!",
-                                "Уведомление",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Information);
-                return;
-            }
-            else if (TxbName.Text == null | TxbName.Text.Trim() == "" |
-                     TxbDateOfBirth.Text == null | TxbDateOfBirth.Text.Trim() == "" |
-                     TxbEmail.Text == null | TxbEmail.Text.Trim() == "" |
-                     TxbLogin.Text == null | TxbLogin.Text.Trim() == "" |
-                     TxbPassword.Text == null | TxbPassword.Text.Trim() == "" |
-                     TxbClass.Text == null | TxbClass.Text.Trim() == "")
+            if (TxbName.Text == null | TxbName.Text.Trim() == "" |
+               TxbDateOfBirth.Text == null | TxbDateOfBirth.Text.Trim() == "" |
+               TxbEmail.Text == null | TxbEmail.Text.Trim() == "" |
+               TxbLogin.Text == null | TxbLogin.Text.Trim() == "" |
+               TxbPassword.Text == null | TxbPassword.Text.Trim() == "" |
+               TxbClass.Text == null | TxbClass.Text.Trim() == "")
             {
                 MessageBox.Show("Заполните все поля!",
                                 "Уведомление",
@@ -65,13 +57,13 @@ namespace SchoolApplication.Admin
                         Email = TxbEmail.Text,
                         Login = TxbLogin.Text,
                         Password = TxbPassword.Text,
-                        ClassId = Convert.ToInt32(TxbClass.Text)                       
+                        ClassId = Convert.ToInt32(TxbClass.Text)
                     };
 
                     DbConnect.entObj.User.Add(userObj);
                     DbConnect.entObj.SaveChanges();
 
-                    MessageBox.Show("Блюдо создано",
+                    MessageBox.Show("Ученик добавлен",
                                     "Уведомление",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);
@@ -86,11 +78,6 @@ namespace SchoolApplication.Admin
                                     MessageBoxImage.Warning);
                 }
             }
-        }
-
-        private void BtnAddImage_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

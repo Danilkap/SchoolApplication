@@ -1,5 +1,4 @@
-﻿using SchoolApplication.AppFiles;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,24 +16,23 @@ using System.Windows.Shapes;
 namespace SchoolApplication.Admin
 {
     /// <summary>
-    /// Логика взаимодействия для AddLessonPage.xaml
+    /// Логика взаимодействия для RedStudentPage.xaml
     /// </summary>
-    public partial class AddLessonPage : Page
+    public partial class RedStudentPage : Page
     {
-        public AddLessonPage()
+        public RedStudentPage()
         {
             InitializeComponent();
         }
 
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
-        {
-            FrameApp.frmObj.GoBack();
-        }
-
-        private void BtnAddLesson_Click(object sender, RoutedEventArgs e)
+        private void BtnRedStudent_Click(object sender, RoutedEventArgs e)
         {
             if (TxbName.Text == null | TxbName.Text.Trim() == "" |
-                TxbTeacher.Text == null | TxbTeacher.Text.Trim() == "")
+                    TxbDateOfBirth.Text == null | TxbDateOfBirth.Text.Trim() == "" |
+                    TxbEmail.Text == null | TxbEmail.Text.Trim() == "" |
+                    TxbLogin.Text == null | TxbLogin.Text.Trim() == "" |
+                    TxbPassword.Text == null | TxbPassword.Text.Trim() == "" |
+                    TxbClass.Text == null | TxbClass.Text.Trim() == "")
             {
                 MessageBox.Show("Заполните все поля!",
                                 "Уведомление",
@@ -45,16 +43,19 @@ namespace SchoolApplication.Admin
             {
                 try
                 {
-                    Lesson lessonObj = new Lesson()
-                    {
-                        LessonName = TxbName.Text,
-                        TeacherId = Convert.ToInt32(TxbTeacher.Text)
-                    };
+                    int num = Convert.ToInt32(TxbStudentId.Text);
+                    var newsRow = DbConnect.entObj.User.Where(w => w.UserId == num).FirstOrDefault();
+                    newsRow.UserName = TxbName.Text;
+                    newsRow.DateOfBirth = Convert.ToDateTime(TxbDateOfBirth.Text);
+                    newsRow.Email = TxbEmail.Text;
+                    newsRow.Login = TxbLogin.Text;
+                    newsRow.Password = TxbPassword.Text;
+                    newsRow.ClassId = Convert.ToInt32(TxbClass.Text);
 
-                    DbConnect.entObj.Lesson.Add(lessonObj);
                     DbConnect.entObj.SaveChanges();
+                    DbConnect.entObj.News.ToList();
 
-                    MessageBox.Show("Предмет создан",
+                    MessageBox.Show("Изменено",
                                     "Уведомление",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);
@@ -69,6 +70,11 @@ namespace SchoolApplication.Admin
                                     MessageBoxImage.Warning);
                 }
             }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.GoBack();
         }
     }
 }

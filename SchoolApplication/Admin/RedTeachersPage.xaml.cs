@@ -1,4 +1,4 @@
-﻿using SchoolApplication.AppFiles;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,24 +17,19 @@ using System.Windows.Shapes;
 namespace SchoolApplication.Admin
 {
     /// <summary>
-    /// Логика взаимодействия для AddLessonPage.xaml
+    /// Логика взаимодействия для RedTeachersPage.xaml
     /// </summary>
-    public partial class AddLessonPage : Page
+    public partial class RedTeachersPage : Page
     {
-        public AddLessonPage()
+        public RedTeachersPage()
         {
             InitializeComponent();
         }
 
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        private void BtnRedTeacher_Click(object sender, RoutedEventArgs e)
         {
-            FrameApp.frmObj.GoBack();
-        }
-
-        private void BtnAddLesson_Click(object sender, RoutedEventArgs e)
-        {
-            if (TxbName.Text == null | TxbName.Text.Trim() == "" |
-                TxbTeacher.Text == null | TxbTeacher.Text.Trim() == "")
+            if (TxbName.Text == null | TxbName.Text.Trim() == ""|
+                TxbDateOfBirth.Text == null | TxbDateOfBirth.Text.Trim() == "")
             {
                 MessageBox.Show("Заполните все поля!",
                                 "Уведомление",
@@ -45,16 +40,16 @@ namespace SchoolApplication.Admin
             {
                 try
                 {
-                    Lesson lessonObj = new Lesson()
-                    {
-                        LessonName = TxbName.Text,
-                        TeacherId = Convert.ToInt32(TxbTeacher.Text)
-                    };
+                    int num = Convert.ToInt32(TxbTeacherId.Text);
+                    var teacRow = DbConnect.entObj.Teacher.Where(w => w.TeacherId == num).FirstOrDefault();
+                    teacRow.TeacherName= TxbName.Text;
+                    teacRow.DateOfBirth = Convert.ToDateTime(TxbDateOfBirth.Text);
+                    teacRow.Image = ImgTeacher.Source.ToString();
 
-                    DbConnect.entObj.Lesson.Add(lessonObj);
                     DbConnect.entObj.SaveChanges();
+                    DbConnect.entObj.News.ToList();
 
-                    MessageBox.Show("Предмет создан",
+                    MessageBox.Show("Изменено",
                                     "Уведомление",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);
@@ -68,6 +63,24 @@ namespace SchoolApplication.Admin
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
                 }
+            }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.GoBack();
+        }
+
+        private void BtnRedImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files|*.bmp;*.jpg;*.jpeg;*png;*tif|All files|*.*";
+            openFileDialog.FilterIndex = 1;
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Uri imageUri = new Uri(openFileDialog.FileName);
+                ImgTeacher.Source = new BitmapImage(imageUri);
             }
         }
     }

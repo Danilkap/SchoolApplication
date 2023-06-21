@@ -41,7 +41,7 @@ namespace SchoolApplication.Admin
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameApp.frmObj.Navigate(new Admin.RedTeachersPage());
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -54,7 +54,7 @@ namespace SchoolApplication.Admin
             var teacherRemoving = DgrEditTeachers.SelectedItems.Cast<Teacher>().ToList();
             try
             {
-                string message = "Вы хотите удалить выбранные блюда?";
+                string message = "Вы хотите удалить выбранного преподавателя?";
                 var result = MessageBox.Show(message,
                                             "Уведомление",
                                             MessageBoxButton.YesNo,

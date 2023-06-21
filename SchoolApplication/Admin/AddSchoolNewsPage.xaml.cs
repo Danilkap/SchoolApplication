@@ -31,20 +31,25 @@ namespace SchoolApplication.Admin
         {
             FrameApp.frmObj.GoBack();
         }
-
-        private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
+       
+        private void BtnAddImage_Click(object sender, RoutedEventArgs e)
         {
-            if (DbConnect.entObj.News.Count(x => x.NameNews == TxbName.Text) > 0)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files|*.bmp;*.jpg;*.jpeg;*png;*tif|All files|*.*";
+            openFileDialog.FilterIndex = 1;
+
+            if (openFileDialog.ShowDialog() == true)
             {
-                MessageBox.Show("Такое пользователь уже есть!",
-                                "Уведомление",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Information);
-                return;
+                Uri imageUri = new Uri(openFileDialog.FileName);
+                ImgNews.Source = new BitmapImage(imageUri);
             }
-            else if (TxbDate.Text == null | TxbDate.Text.Trim() == "" |
-                     TxbName.Text == null | TxbName.Text.Trim() == "" |
-                     TxbText.Text == null | TxbText.Text.Trim() == "")
+        }
+
+        private void BtnAddSchoolNews_Click(object sender, RoutedEventArgs e)
+        {
+            if (TxbDate.Text == null | TxbDate.Text.Trim() == "" |
+                TxbName.Text == null | TxbName.Text.Trim() == "" |
+                TxbText.Text == null | TxbText.Text.Trim() == "")
             {
                 MessageBox.Show("Заполните все поля!",
                                 "Уведомление",
@@ -66,7 +71,7 @@ namespace SchoolApplication.Admin
                     DbConnect.entObj.News.Add(newsObj);
                     DbConnect.entObj.SaveChanges();
 
-                    MessageBox.Show("Блюдо создано",
+                    MessageBox.Show("Новость создана",
                                     "Уведомление",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);
@@ -80,19 +85,6 @@ namespace SchoolApplication.Admin
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
                 }
-            }
-        }
-
-        private void BtnAddImage_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files|*.bmp;*.jpg;*.jpeg;*png;*tif|All files|*.*";
-            openFileDialog.FilterIndex = 1;
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                Uri imageUri = new Uri(openFileDialog.FileName);
-                ImgNews.Source = new BitmapImage(imageUri);
             }
         }
     }

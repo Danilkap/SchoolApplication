@@ -17,13 +17,18 @@ using System.Windows.Shapes;
 namespace SchoolApplication.Admin
 {
     /// <summary>
-    /// Логика взаимодействия для AddLessonPage.xaml
+    /// Логика взаимодействия для RedLessonPage.xaml
     /// </summary>
-    public partial class AddLessonPage : Page
+    public partial class RedLessonPage : Page
     {
-        public AddLessonPage()
+        public RedLessonPage()
         {
             InitializeComponent();
+        }
+
+        private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -31,7 +36,12 @@ namespace SchoolApplication.Admin
             FrameApp.frmObj.GoBack();
         }
 
-        private void BtnAddLesson_Click(object sender, RoutedEventArgs e)
+        private void BtnRedProduct_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void BtnRedLesson_Click(object sender, RoutedEventArgs e)
         {
             if (TxbName.Text == null | TxbName.Text.Trim() == "" |
                 TxbTeacher.Text == null | TxbTeacher.Text.Trim() == "")
@@ -45,16 +55,15 @@ namespace SchoolApplication.Admin
             {
                 try
                 {
-                    Lesson lessonObj = new Lesson()
-                    {
-                        LessonName = TxbName.Text,
-                        TeacherId = Convert.ToInt32(TxbTeacher.Text)
-                    };
+                    int num = Convert.ToInt32(TxbLessonId.Text);
+                    var lesRow = DbConnect.entObj.Lesson.Where(w => w.LessonId == num).FirstOrDefault();
+                    lesRow.LessonName = TxbName.Text;
+                    lesRow.TeacherId = Convert.ToInt32(TxbTeacher.Text);
 
-                    DbConnect.entObj.Lesson.Add(lessonObj);
                     DbConnect.entObj.SaveChanges();
+                    DbConnect.entObj.News.ToList();
 
-                    MessageBox.Show("Предмет создан",
+                    MessageBox.Show("Изменено",
                                     "Уведомление",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);

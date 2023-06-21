@@ -34,12 +34,7 @@ namespace SchoolApplication.Admin
         {
             FrameApp.frmObj.GoBack();
         }
-
-        private void BtnBack_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+       
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
             DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
@@ -56,7 +51,7 @@ namespace SchoolApplication.Admin
             var newsRemoving = DgrEditNews.SelectedItems.Cast<News>().ToList();
             try
             {
-                string message = "Вы хотите удалить выбранные блюда?";
+                string message = "Вы хотите удалить выбраную новость?";
                 var result = MessageBox.Show(message,
                                             "Уведомление",
                                             MessageBoxButton.YesNo,

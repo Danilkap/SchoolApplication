@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolApplication.Admin"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="800"
       Title="AddLessonPage">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="250" Margin="5">Название:</TextBlock>
                 <TextBox Name="TxbName"
@@ -25,10 +25,10 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Name="BtnAddProduct"
+                <Button Name="BtnAddLesson"
                     Width="150"
                     Margin="5"
-                    Click="BtnAddProduct_Click">Добавить</Button>
+                    Click="BtnAddLesson_Click">Добавить</Button>
                 <Button Name="BtnBack"
                     Width="150"
                     Margin="5"

@@ -49,10 +49,11 @@
             </TextBlock>
         </StackPanel>
 
-        <DataGrid HorizontalAlignment="Center" Name="DgrEditStudent" Grid.Row="1" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
+        <DataGrid HorizontalAlignment="Center" Name="DgrEditStudent" Grid.Row="1" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="775" Margin="5">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding UserId}"  Width="0.3*"/>
                 <DataGridTextColumn Header="ФИО" Binding="{Binding UserName}" Width="0.8*"/>
-                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateOfBirth}" Width="0.6*"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateOfBirth}" Width="0.4*"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="0.5*"/>
                 <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="0.5*"/>
                 <DataGridTextColumn Header="Пароль" Binding="{Binding Password}" Width="0.5*"/>
@@ -79,6 +80,6 @@
                 Width="100"
                 Height="40"
                 Margin="20 0 0 0"
-                Click="BtnEdit_Click_1">Редактировать</Button>
+                Click="BtnEdit_Click">Редактировать</Button>
     </Grid>
 </Page>

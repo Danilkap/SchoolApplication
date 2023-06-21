@@ -51,6 +51,7 @@
 
         <DataGrid HorizontalAlignment="Center" Name="DgrEditNews" Grid.Row="1" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="775" Margin="5">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding NewsId}" Width="0.2*"/>
                 <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="0.3*"/>
                 <DataGridTextColumn Header="Название" Binding="{Binding NameNews}" Width="0.6*"/>
                 <DataGridTextColumn Header="Текст" Binding="{Binding Text}" Width="*"/>

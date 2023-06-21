@@ -27,15 +27,10 @@ namespace SchoolApplication.Admin
 
             DgrEditLessons.ItemsSource = DbConnect.entObj.Lesson.ToList();
         }
-
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
-        {
-            FrameApp.frmObj.GoBack();
-        }
-
+        
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameApp.frmObj.Navigate(new Admin.RedLessonPage());
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -48,7 +43,7 @@ namespace SchoolApplication.Admin
             var lessonRemoving = DgrEditLessons.SelectedItems.Cast<Lesson>().ToList();
             try
             {
-                string message = "Вы хотите удалить выбранные блюда?";
+                string message = "Вы хотите удалить выбранный предмет?";
                 var result = MessageBox.Show(message,
                                             "Уведомление",
                                             MessageBoxButton.YesNo,
@@ -71,6 +66,11 @@ namespace SchoolApplication.Admin
         {
             DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
             DgrEditLessons.ItemsSource = DbConnect.entObj.Lesson.ToList();
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.GoBack();
         }
     }
 }

@@ -26,8 +26,8 @@ namespace SchoolApplication.Student
 
             DgrLessons.ItemsSource = DbConnect.entObj.Lesson.ToList();
         }
-
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
+     
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.GoBack();
         }

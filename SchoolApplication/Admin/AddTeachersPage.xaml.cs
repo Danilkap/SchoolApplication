@@ -40,28 +40,15 @@ namespace SchoolApplication.Admin
             }
         }
 
-        private void AddProduct_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.GoBack();
         }
-
-        private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
+        
+        private void BtnAddTeacher_Click(object sender, RoutedEventArgs e)
         {
-            if (DbConnect.entObj.Teacher.Count(x => x.TeacherName == TxbName.Text) > 0)
-            {
-                MessageBox.Show("Такое пользователь уже есть!",
-                                "Уведомление",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Information);
-                return;
-            }
-            else if (TxbName.Text == null | TxbName.Text.Trim() == "" |
-                     TxbDateOfBirth.Text == null | TxbDateOfBirth.Text.Trim() == "")
+            if (TxbName.Text == null | TxbName.Text.Trim() == "" |
+                            TxbDateOfBirth.Text == null | TxbDateOfBirth.Text.Trim() == "")
             {
                 MessageBox.Show("Заполните все поля!",
                                 "Уведомление",
@@ -82,7 +69,7 @@ namespace SchoolApplication.Admin
                     DbConnect.entObj.Teacher.Add(teacherObj);
                     DbConnect.entObj.SaveChanges();
 
-                    MessageBox.Show("Блюдо создано",
+                    MessageBox.Show("Преподаватель создан",
                                     "Уведомление",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);

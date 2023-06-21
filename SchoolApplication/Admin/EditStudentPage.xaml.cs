@@ -41,7 +41,7 @@ namespace SchoolApplication.Admin
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameApp.frmObj.Navigate(new Admin.RedStudentPage());
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -49,7 +49,7 @@ namespace SchoolApplication.Admin
             var studentRemoving = DgrEditStudent.SelectedItems.Cast<User>().ToList();
             try
             {
-                string message = "Вы хотите удалить выбранные блюда?";
+                string message = "Вы хотите удалить выбранного ученика?";
                 var result = MessageBox.Show(message,
                                             "Уведомление",
                                             MessageBoxButton.YesNo,
@@ -72,10 +72,6 @@ namespace SchoolApplication.Admin
         {
             FrameApp.frmObj.Navigate(new Admin.AddStudentPage());
         }
-
-        private void BtnEdit_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
     }
 }

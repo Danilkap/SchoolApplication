@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolApplication.Admin"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="800"
       Title="EditLessonSchedulePage">
 
     <Grid>
@@ -15,7 +15,7 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         
-        <Button Name="BtnExit"
+        <Button Name="BtnBack"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="100"
@@ -24,7 +24,7 @@
                 Content="Назад"
                 FontSize="15"
                 Margin="20 40 0 0"
-                Click="BtnExit_Click"></Button>
+                Click="BtnBack_Click"></Button>
         
         <Button Name="BtnRefresh"
                 HorizontalAlignment="Right"
@@ -44,24 +44,16 @@
                    FontWeight="Bold" 
                    Grid.Row="0"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Top">Редактирование расписания
+                   VerticalAlignment="Top">Редактирование предметов
             </TextBlock>
         </StackPanel>
        
-            <DataGrid HorizontalAlignment="Center" Name="DgrEditLessons" Grid.Row="1" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
+            <DataGrid HorizontalAlignment="Center" Name="DgrEditLessons" Grid.Row="1" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="775" Margin="5">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding LessonId}"  Width="*"/>
                 <DataGridTextColumn Header="Название" Binding="{Binding LessonName}"  Width="*"/>
-                <DataGridTextColumn Header="Преподаватель" Binding="{Binding TeacherId}" Width="0.8*"/>
-
-                <DataGridTemplateColumn Width="auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Редактировать"
-                                    Name="BtnEdit"
-                                    Click="BtnEdit_Click"></Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Преподаватель" Binding="{Binding TeacherId}"  Width="0.8*"/>
+               
             </DataGrid.Columns>
         </DataGrid>
         
@@ -79,5 +71,12 @@
                 Margin="0 0 20 0"
                 HorizontalAlignment="Right"
                 Click="BtnDelete_Click">Удалить</Button>
+        <Button Name="BtnEdit"
+                Grid.Row="2" 
+                HorizontalAlignment="Center"
+                Width="100"
+                Height="40"
+                Margin="20 0 0 0"
+                Click="BtnEdit_Click">Редактировать</Button>
     </Grid>
 </Page>
