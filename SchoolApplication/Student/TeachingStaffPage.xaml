@@ -30,7 +30,7 @@
             </TextBlock>
         </StackPanel>
 
-        <DataGrid HorizontalAlignment="Center" Name="DgrTeachers" Height="300" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="730" Margin="5">
+        <DataGrid HorizontalAlignment="Center" Name="DgrTeachers" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="730" Margin="5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Binding="{Binding TeacherName}" Width="0.8*"/>
                 <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateOfBirth}" Width="0.4*"/>

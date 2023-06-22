@@ -31,7 +31,7 @@ namespace SchoolApplication.Admin
                     TxbDateOfBirth.Text == null | TxbDateOfBirth.Text.Trim() == "" |
                     TxbEmail.Text == null | TxbEmail.Text.Trim() == "" |
                     TxbLogin.Text == null | TxbLogin.Text.Trim() == "" |
-                    TxbPassword.Text == null | TxbPassword.Text.Trim() == "" |
+                    TxbPassword.Text == null | TxbPassword.Text.Trim() == ""|
                     TxbClass.Text == null | TxbClass.Text.Trim() == "")
             {
                 MessageBox.Show("Заполните все поля!",

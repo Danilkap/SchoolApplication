@@ -57,6 +57,7 @@
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="0.5*"/>
                 <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="0.5*"/>
                 <DataGridTextColumn Header="Пароль" Binding="{Binding Password}" Width="0.5*"/>
+                <DataGridTextColumn Header="ClassId" Binding="{Binding ClassId}" Width="0.3*"/>
             </DataGrid.Columns>
         </DataGrid>
 

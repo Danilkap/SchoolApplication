@@ -28,7 +28,8 @@
                 <TextBox Margin="10 0 0 0"
                          Name="TxbLogin"
                          Width="300"
-                         Height="40"
+                         Height="30"
+                         FontSize="15"
                          />
             </StackPanel>
 
@@ -40,7 +41,8 @@
                            FontSize="25"/>
                 <PasswordBox Name="PsbPassword"
                              Width="300"
-                             Height="40"/>
+                             Height="30"
+                             FontSize="15"/>
             </StackPanel>
 
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">

@@ -38,7 +38,7 @@ namespace SchoolApplication.Admin
                TxbDateOfBirth.Text == null | TxbDateOfBirth.Text.Trim() == "" |
                TxbEmail.Text == null | TxbEmail.Text.Trim() == "" |
                TxbLogin.Text == null | TxbLogin.Text.Trim() == "" |
-               TxbPassword.Text == null | TxbPassword.Text.Trim() == "" |
+               TxbPassword.Text == null | TxbPassword.Text.Trim() == ""|
                TxbClass.Text == null | TxbClass.Text.Trim() == "")
             {
                 MessageBox.Show("Заполните все поля!",
@@ -57,7 +57,8 @@ namespace SchoolApplication.Admin
                         Email = TxbEmail.Text,
                         Login = TxbLogin.Text,
                         Password = TxbPassword.Text,
-                        ClassId = Convert.ToInt32(TxbClass.Text)
+                        ClassId = Convert.ToInt32(TxbClass.Text),
+                        RoleId = 1
                     };
 
                     DbConnect.entObj.User.Add(userObj);
