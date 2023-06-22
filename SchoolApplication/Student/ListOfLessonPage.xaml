@@ -29,7 +29,7 @@
             </TextBlock>
         </StackPanel>
 
-        <DataGrid HorizontalAlignment="Center" Name="DgrLessons" Height="300" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="730" Margin="5">
+        <DataGrid HorizontalAlignment="Center" Name="DgrLessons" Height="300" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="730" Margin="5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding LessonName}"  Width="*"/>
                 <DataGridTextColumn Header="Преподаватель" Binding="{Binding TeacherId}" Width="0.8*"/>

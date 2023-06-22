@@ -44,7 +44,7 @@
                    FontWeight="Bold" 
                    Grid.Row="0"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Top">Редактирование предметов
+                   VerticalAlignment="Top">Просмотр школьных предметов
             </TextBlock>
         </StackPanel>
        

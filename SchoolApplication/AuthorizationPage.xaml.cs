@@ -27,28 +27,43 @@ namespace SchoolApplication
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (DbConnect.entObj.User.Count(x => x.Login == TxbLogin.Text) > 0)
+            var userObj = DbConnect.entObj.User.FirstOrDefault(x => x.Login == TxbLogin.Text && x.Password == PsbPassword.Password);
+            if (userObj == null)
             {
-                FrameApp.frmObj.Navigate(new Student.StudentMenuPage());
+                 MessageBox.Show("Такой пользователь не найден.",
+                                 "Уведомление",
+                                 MessageBoxButton.OK,
+                                 MessageBoxImage.Information);
 
             }
             else
             {
-                MessageBox.Show("Данные введены неверно!",
-                                 "Уведомление",
-                                 MessageBoxButton.OK,
-                                 MessageBoxImage.Information);
-            }
+               switch (userObj.RoleId)
+                {
+                    case 1:
+                        MessageBox.Show("Здравствуйте, пользователь " + userObj.UserName,
+                            "Уведомление",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
 
-            if (TxbLogin.Text == "fff" || PsbPassword.Password == "123")
-            {
-                FrameApp.frmObj.Navigate(new Admin.AdminMenuPage());
+                        FrameApp.frmObj.Navigate(new Student.StudentMenuPage());
+                        break;
+
+                    case 2:
+                        MessageBox.Show("Здравствуйте, администратор " + userObj.UserName,
+                            "Уведомление",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
+
+                        FrameApp.frmObj.Navigate(new Admin.AdminMenuPage());
+                        break;
+                }
             }
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
-            FrameApp.frmObj.GoBack();
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

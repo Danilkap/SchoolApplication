@@ -29,7 +29,7 @@
             </TextBlock>
         </StackPanel>
 
-        <DataGrid HorizontalAlignment="Center" Name="DgrNews" Height="360" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Bottom" Width="775" Margin="5">
+        <DataGrid HorizontalAlignment="Center" Name="DgrNews" Height="360" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="775" Margin="5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="0.4*"/>
                 <DataGridTextColumn Header="Название" Binding="{Binding NameNews}" Width="0.6*"/>
