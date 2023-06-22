@@ -25,29 +25,29 @@ namespace SchoolApplication.Admin
             InitializeComponent();
         }
 
-        private void BtnRedStudent_Click(object sender, RoutedEventArgs e)
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.GoBack();
+        }
+
+        private void BtnViewStudent_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.Navigate(new Admin.EditStudentPage());
         }
 
-        private void BtnRedTeacher_Click(object sender, RoutedEventArgs e)
+        private void BtnViewTeacher_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.Navigate(new Admin.EditTeachersPage());
         }
 
-        private void BtnRedLesson_Click(object sender, RoutedEventArgs e)
+        private void BtnViewLesson_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.Navigate(new Admin.EditLessonSchedulePage());
         }
 
-        private void BtnRedSchoolNews_Click(object sender, RoutedEventArgs e)
+        private void BtnViewSchoolNews_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.Navigate(new Admin.EditSchoolNewsPage());
-        }
-
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
-        {
-            FrameApp.frmObj.GoBack();
         }
     }
 }

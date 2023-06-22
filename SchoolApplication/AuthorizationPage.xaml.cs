@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,47 +12,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
-using SchoolApplication.AppFiles;
 
 namespace SchoolApplication
 {
     /// <summary>
-    /// Логика взаимодействия для RegistrationPage.xaml
+    /// Логика взаимодействия для AuthorizationPage.xaml
     /// </summary>
-    public partial class RegistrationPage : Page
+    public partial class AuthorizationPage : Page
     {
-
-        public RegistrationPage()
+        public AuthorizationPage()
         {
             InitializeComponent();
-
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-
             if (DbConnect.entObj.User.Count(x => x.Login == TxbLogin.Text) > 0)
             {
-                FrameApp.frmObj.Navigate( new Student.StudentMenuPage()); 
+                FrameApp.frmObj.Navigate(new Student.StudentMenuPage());
 
-            }else
-             {
-               MessageBox.Show("Данные введены неверно!",
-                                "Уведомление",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Information);
-             }
+            }
+            else
+            {
+                MessageBox.Show("Данные введены неверно!",
+                                 "Уведомление",
+                                 MessageBoxButton.OK,
+                                 MessageBoxImage.Information);
+            }
 
             if (TxbLogin.Text == "fff" || PsbPassword.Password == "123")
             {
                 FrameApp.frmObj.Navigate(new Admin.AdminMenuPage());
             }
-        }
-
-        private void Hide()
-        {
-            throw new NotImplementedException();
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)

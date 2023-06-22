@@ -29,7 +29,7 @@ namespace SchoolApplication
             DbConnect.entObj = new SchoolApplicationEntities();
 
             FrameApp.frmObj = MainFrame;
-            MainFrame.Navigate(new RegistrationPage());
+            MainFrame.Navigate(new AuthorizationPage());
         }
     }
 }

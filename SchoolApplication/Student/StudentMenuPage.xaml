@@ -33,7 +33,7 @@
                     Width="350">
             
             <StackPanel VerticalAlignment="Top">
-              <Button Name="BtnListOfLesson"  Width="205" Height="40" Content="Расписание уроков" FontSize="15" Margin="15 100 0 0" Click="BtnListOfLesson_Click"></Button>  
+              <Button Name="BtnListOfLesson"  Width="205" Height="40" Content="Школьные предметы" FontSize="15" Margin="15 100 0 0" Click="BtnListOfLesson_Click"></Button>  
             </StackPanel>
 
             <StackPanel VerticalAlignment="Bottom">
