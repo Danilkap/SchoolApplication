@@ -49,14 +49,19 @@
             </TextBlock>
         </StackPanel>
 
-        <DataGrid HorizontalAlignment="Center" Name="DgrEditNews" Grid.Row="1" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="775" Margin="5">
+        <DataGrid HorizontalAlignment="Center" Name="DgrEditNews" Grid.Row="1" Height="285" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="790" Margin="5">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding NewsId}" Width="0.2*"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding NewsId}" Width="0.1*"/>
                 <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="0.3*"/>
                 <DataGridTextColumn Header="Название" Binding="{Binding NameNews}" Width="0.6*"/>
-                <DataGridTextColumn Header="Текст" Binding="{Binding Text}" Width="*"/>
-
-                <DataGridTemplateColumn Width="0.8*" Header="Фотография">
+                <DataGridTextColumn Header="Текст" Binding="{Binding Text}" Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Width="0.7*" Header="Фотография">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding Image}"></Image>

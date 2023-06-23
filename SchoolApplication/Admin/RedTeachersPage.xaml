@@ -42,7 +42,7 @@
                 <Button Name="BtnRedTeacher"
                     Width="150"
                     Margin="5"
-                    Click="BtnRedTeacher_Click">Добавить</Button>
+                    Click="BtnRedTeacher_Click">Редактировать</Button>
                 <Button Name="BtnBack"
                     Width="150"
                     Margin="5"

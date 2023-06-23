@@ -28,7 +28,7 @@
           <Property Name="NewsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameNews" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="Image" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
@@ -198,7 +198,7 @@
           <Property Name="NewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameNews" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Text" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Role">
@@ -293,7 +293,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
