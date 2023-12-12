@@ -5,11 +5,61 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolApplication.Admin"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
-      Title="RedStudentPage">
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="Редактирование учеников" Loaded="Page_Loaded">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="270"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="0/0"
+                   Name="ResultTxb"
+                   FontSize="16"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="100 0 0 0"/>
+
+        <StackPanel Grid.Row="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBox Name="TxbSearch"
+                     Width="300"
+                     FontSize="15"
+                     Margin="5"
+                     TextChanged="TxbSearch_TextChanged"/>
+
+            <ComboBox Width="120"
+                      Margin="5"
+                      Name="CmbFilter"
+                      SelectionChanged="CmbFilter_SelectionChanged">
+            </ComboBox>
+        </StackPanel>
+
+        <ListView   Margin="5"
+                    Width="950"
+                    Height="255"
+                    x:Name="DgrRedStudent"
+                    Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding UserId}" Width="100">Номер ученика</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding UserName}" Width="180">ФИО</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding DateOfBirth}" Width="150">День рождения</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="130">Email</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Login}" Width="130">Логин</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Password}" Width="75">Пароль</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Class.ClassName}" Width="80">Класс</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding ClassId}" Width="90">Номер класса</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2">
+            <TextBlock Width="395" Margin="5" FontSize="25">Редактирование студента</TextBlock>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="2">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="250" Margin="5">StudentId:</TextBlock>
                 <TextBox Name="TxbStudentId"
@@ -64,8 +114,13 @@
                     Width="150"
                     Margin="5"
                     Click="BtnRedStudent_Click">Редактировать</Button>
+                <Button Name="BtnDelete"
+                  Width="100"
+                  Margin="5"
+                Click="BtnDelete_Click">Удалить</Button>
                 <Button Name="BtnBack"
-                    Width="150"
+                    Width="100"
+                    Height="40"
                     Margin="5"
                     Click="BtnBack_Click">Назад</Button>
             </StackPanel>

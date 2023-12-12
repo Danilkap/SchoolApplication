@@ -5,18 +5,77 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolApplication.Admin"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
-      Title="RedSchoolNewsPage">
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="Редактирование школьных новостей">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="270"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="0/0"
+                   Name="ResultTxb"
+                   FontSize="16"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="100 0 0 0"/>
+
+        <StackPanel Grid.Row="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBox Name="TxbSearch"
+                     Width="300"
+                     FontSize="15"
+                     Margin="5"
+                     TextChanged="TxbSearch_TextChanged"/>
+        </StackPanel>
+
+        <ListView   Margin="5"
+                    Width="995"
+                    Height="300"
+                    x:Name="DgrRedNews"
+                    Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding NewsId}" Width="90">Номер новости</GridViewColumn>
+                    <GridViewColumn Width="175"  Header="Название новости">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding NameNews}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="140">Дата публикации</GridViewColumn>
+                    <GridViewColumn Width="430"  Header="Текст">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding Text}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Фотография" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Image}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2">
+            <TextBlock Width="410" Margin="5" FontSize="25">Редактирование школьной новости</TextBlock>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="250" Margin="5">NewsId:</TextBlock>
                 <TextBox Name="TxbNewsId"
                          Margin="5"
                          Width="200"></TextBox>
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="250" Margin="5">Дата:</TextBlock>
                 <TextBox Name="TxbDate"
@@ -50,15 +109,24 @@
                     Width="150"
                     Margin="5"
                     Click="BtnRedNews_Click">Редактировать</Button>
+                <Button Name="BtnDelete"
+                    Width="100"
+                    Margin="5"
+                    Click="BtnDelete_Click">Удалить</Button>
                 <Button Name="BtnBack"
-                    Width="150"
+                    Width="100"
+                    Height="40"
                     Margin="5"
                     Click="BtnBack_Click">Назад</Button>
             </StackPanel>
         </StackPanel>
-
-        <Image Width="350" 
-               HorizontalAlignment="Right"
+        <StackPanel Grid.Row="2">
+            <Image Width="170"
+               Height="150"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Margin="200 -20 0 0"
                Name="ImgNews"></Image>
+        </StackPanel>
     </Grid>
 </Page>

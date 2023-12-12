@@ -33,11 +33,6 @@ namespace SchoolApplication.Admin
             FrameApp.frmObj.Navigate(new Admin.RedLessonPage());
         }
 
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            FrameApp.frmObj.Navigate(new Admin.AddLessonPage());
-        }
-
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             var lessonRemoving = DgrEditLessons.SelectedItems.Cast<Lesson>().ToList();
@@ -71,6 +66,59 @@ namespace SchoolApplication.Admin
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.GoBack();
+        }
+
+        private void BtnAddLesson_Click(object sender, RoutedEventArgs e)
+        {
+            if (TxbName.Text == null | TxbName.Text.Trim() == "" |
+                TxbTeacher.Text == null | TxbTeacher.Text.Trim() == "")
+            {
+                MessageBox.Show("Заполните все поля!",
+                                "Уведомление",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+            }
+            else
+            {
+                try
+                {
+                    Lesson lessonObj = new Lesson()
+                    {
+                        LessonName = TxbName.Text,
+                        TeacherId = Convert.ToInt32(TxbTeacher.Text)
+                    };
+
+                    DbConnect.entObj.Lesson.Add(lessonObj);
+                    DbConnect.entObj.SaveChanges();
+
+                    MessageBox.Show("Предмет создан",
+                                    "Уведомление",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Information);
+
+                    FrameApp.frmObj.GoBack();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка работы приложения: " + ex.Message.ToString(),
+                                    "Критический сбой работы приложения",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Warning);
+                }
+            }
+        }
+
+        private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                DgrEditLessons.ItemsSource = DbConnect.entObj.Lesson.Where(x => x.LessonName.Contains(TxbSearch.Text)).Take(100).ToList();
+                ResultTxb.Text = DgrEditLessons.Items.Count + "/" + DbConnect.entObj.Lesson.Where(x => x.LessonName.Contains(TxbSearch.Text)).Count().ToString();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

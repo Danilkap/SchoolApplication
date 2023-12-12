@@ -5,19 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchoolApplication"
         mc:Ignorable="d"
-        Title="School Application" Height="650" Width="800"  MinHeight="650" MinWidth="800" Icon="icon.png">
+        Title="School Application" Height="650" Width="1000"  MinHeight="650" MinWidth="1000" Icon="icon.png">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="65"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Background="Brown" Orientation="Vertical" Grid.ColumnSpan="2">
             <StackPanel HorizontalAlignment="Center">
-                <TextBlock FontSize="30" 
+                <TextBlock Text="{Binding Content.Title, ElementName=MainFrame}"
+                           FontSize="30" 
                            FontWeight="Bold"
-                           Foreground="White">School Application</TextBlock>
+                           Foreground="White"></TextBlock>
             </StackPanel>
         </StackPanel>
 

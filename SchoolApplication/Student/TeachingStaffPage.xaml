@@ -5,44 +5,60 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolApplication.Student"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
-      Title="TeachingStaffPage">
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="Преподавательский состав">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="0/0"
+                   Name="ResultTxb"
+                   FontSize="16"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="100 0 0 0"/>
+
+        <StackPanel Grid.Row="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBox Name="TxbSearch"
+                     Width="300"
+                     FontSize="15"
+                     Margin="5"
+                     TextChanged="TxbSearch_TextChanged"/>
+        </StackPanel>
+
+        <ListView   Margin="5"
+                    Width="675"
+                    Height="425"
+                    x:Name="DgrTeachers"
+                    Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding TeacherName}" Width="300">ФИО</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding DateOfBirth}" Width="250">День рождения</GridViewColumn>
+                    <GridViewColumn Header="Фотография" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Image}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
         <Button Name="BtnBack"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
+                VerticalAlignment="Bottom"
+                Grid.Row="1"
                 Width="100"
                 Height="40"
                 Content="Назад"
                 FontSize="15"
-                Margin="20 40 0 0"
+                Margin="20 0 0 20"
                 Click="BtnBack_Click"></Button>
-
-        <StackPanel>
-            <TextBlock Margin="5"
-                   Foreground="Gray"
-                   FontSize="25"
-                   FontWeight="Bold"                      
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top">Преподавательский состав
-            </TextBlock>
-        </StackPanel>
-
-        <DataGrid HorizontalAlignment="Center" Name="DgrTeachers" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="730" Margin="5">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Binding="{Binding TeacherName}" Width="0.8*"/>
-                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateOfBirth}" Width="0.4*"/>
-                
-                <DataGridTemplateColumn Width="*" Header="Фотография">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Image}"></Image>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
     </Grid>
 </Page>

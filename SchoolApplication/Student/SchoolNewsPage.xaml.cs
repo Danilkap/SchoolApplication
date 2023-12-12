@@ -31,5 +31,18 @@ namespace SchoolApplication.Student
         {
             FrameApp.frmObj.GoBack();
         }
+
+        private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                DgrNews.ItemsSource = DbConnect.entObj.News.Where(x => x.NameNews.Contains(TxbSearch.Text)).Take(100).ToList();
+                ResultTxb.Text = DgrNews.Items.Count + "/" + DbConnect.entObj.News.Where(x => x.NameNews.Contains(TxbSearch.Text)).Count().ToString();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

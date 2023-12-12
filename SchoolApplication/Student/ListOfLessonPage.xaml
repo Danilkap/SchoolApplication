@@ -5,35 +5,52 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolApplication.Student"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
-      Title="ListOfLessonPage">
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="Школьные предметы">
 
     <Grid>
-        <Button Name="BtnBack"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Width="100"
-                Height="40"
-                Content="Назад"
-                FontSize="15"
-                Margin="20 40 0 0"
-                Click="BtnBack_Click"></Button>
-        
-        <StackPanel>
-            <TextBlock Margin="5"
-                   Foreground="Gray"
-                   FontSize="25"
-                   FontWeight="Bold"                      
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top">Школьные предметы
-            </TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="0/0"
+                   Name="ResultTxb"
+                   FontSize="16"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="100 0 0 0"/>
+
+        <StackPanel Grid.Row="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBox Name="TxbSearch"
+                     Width="300"
+                     FontSize="15"
+                     Margin="5"
+                     TextChanged="TxbSearch_TextChanged"/>
         </StackPanel>
 
-        <DataGrid HorizontalAlignment="Center" Name="DgrLessons" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="730" Margin="5">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Binding="{Binding LessonName}"  Width="*"/>
-                <DataGridTextColumn Header="Преподаватель" Binding="{Binding TeacherId}" Width="0.8*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListView   Margin="5"
+                    Width="675"
+                    Height="450"
+                    x:Name="DgrLessons"
+                    Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding LessonName}" Width="300">Название предмета</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Teacher.TeacherName}" Width="350">Учитель преподающий предмет</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Name="BtnBack"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Width="100"
+                Height="40"
+                Grid.Row="1"
+                Content="Назад"
+                FontSize="15"
+                Margin="20 0 0 20"
+                Click="BtnBack_Click"></Button>
     </Grid>
 </Page>

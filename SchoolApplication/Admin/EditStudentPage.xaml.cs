@@ -21,11 +21,13 @@ namespace SchoolApplication.Admin
     /// </summary>
     public partial class EditStudentPage : Page
     {
+        private List<User> allItems;
         public EditStudentPage()
         {
             InitializeComponent();
 
             DgrEditStudent.ItemsSource = DbConnect.entObj.User.ToList();
+            allItems = DbConnect.entObj.User.ToList();
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -68,10 +70,93 @@ namespace SchoolApplication.Admin
             }
         }
 
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        private void BtnAddStudent_Click(object sender, RoutedEventArgs e)
         {
-            FrameApp.frmObj.Navigate(new Admin.AddStudentPage());
+            if (TxbName.Text == null | TxbName.Text.Trim() == "" |
+               TxbDateOfBirth.Text == null | TxbDateOfBirth.Text.Trim() == "" |
+               TxbEmail.Text == null | TxbEmail.Text.Trim() == "" |
+               TxbLogin.Text == null | TxbLogin.Text.Trim() == "" |
+               TxbPassword.Text == null | TxbPassword.Text.Trim() == "" |
+               TxbClass.Text == null | TxbClass.Text.Trim() == "")
+            {
+                MessageBox.Show("Заполните все поля!",
+                                "Уведомление",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+            }
+            else
+            {
+                try
+                {
+                    User userObj = new User()
+                    {
+                        UserName = TxbName.Text,
+                        DateOfBirth = Convert.ToDateTime(TxbDateOfBirth.Text),
+                        Email = TxbEmail.Text,
+                        Login = TxbLogin.Text,
+                        Password = TxbPassword.Text,
+                        ClassId = Convert.ToInt32(TxbClass.Text),
+                        RoleId = 1
+                    };
+
+                    DbConnect.entObj.User.Add(userObj);
+                    DbConnect.entObj.SaveChanges();
+
+                    MessageBox.Show("Ученик добавлен",
+                                    "Уведомление",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Information);
+
+                    FrameApp.frmObj.GoBack();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка работы приложения: " + ex.Message.ToString(),
+                                    "Критический сбой работы приложения",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Warning);
+                }
+            }
         }
-       
+
+        private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                DgrEditStudent.ItemsSource = DbConnect.entObj.User.Where(x => x.UserName.Contains(TxbSearch.Text)).Take(100).ToList();
+                ResultTxb.Text = DgrEditStudent.Items.Count + "/" + DbConnect.entObj.User.Where(x => x.UserName.Contains(TxbSearch.Text)).Count().ToString();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void CmbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var select = CmbFilter.SelectedItem as Class;
+            var items = (select != null) ? allItems.Where(x => x.ClassId == select.ClassId) : allItems;
+            DgrEditStudent.ItemsSource = items;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CmbFilter.ItemsSource = DbConnect.entObj.Class.ToList();
+                CmbFilter.DisplayMemberPath = "ClassName";
+                CmbFilter.SelectedIndex = 0;
+
+                DgrEditStudent.ItemsSource = DbConnect.entObj.User.Take(100).ToList();
+                ResultTxb.Text = DgrEditStudent.Items.Count + "/" + DbConnect.entObj.User.Count().ToString();
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message,
+                    "Упс, что-то пошло не так!",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Exclamation);
+            }
+        }
     }
 }

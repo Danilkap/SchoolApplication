@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using SchoolApplication.AppFiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace SchoolApplication.Admin
         public RedTeachersPage()
         {
             InitializeComponent();
+
+            DgrRedTeachers.ItemsSource = DbConnect.entObj.Teacher.ToList();
         }
 
         private void BtnRedTeacher_Click(object sender, RoutedEventArgs e)
@@ -81,6 +84,43 @@ namespace SchoolApplication.Admin
             {
                 Uri imageUri = new Uri(openFileDialog.FileName);
                 ImgTeacher.Source = new BitmapImage(imageUri);
+            }
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var teacherRemoving = DgrRedTeachers.SelectedItems.Cast<Teacher>().ToList();
+            try
+            {
+                string message = "Вы хотите удалить выбранного преподавателя?";
+                var result = MessageBox.Show(message,
+                                            "Уведомление",
+                                            MessageBoxButton.YesNo,
+                                            MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)
+                {
+                    DbConnect.entObj.Teacher.RemoveRange(teacherRemoving);
+                    DbConnect.entObj.SaveChanges();
+
+                    DgrRedTeachers.ItemsSource = DbConnect.entObj.Teacher.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                DgrRedTeachers.ItemsSource = DbConnect.entObj.Teacher.Where(x => x.TeacherName.Contains(TxbSearch.Text)).Take(100).ToList();
+                ResultTxb.Text = DgrRedTeachers.Items.Count + "/" + DbConnect.entObj.Teacher.Where(x => x.TeacherName.Contains(TxbSearch.Text)).Count().ToString();
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
     }

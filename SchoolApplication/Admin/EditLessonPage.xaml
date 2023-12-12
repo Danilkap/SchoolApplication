@@ -5,78 +5,94 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolApplication.Admin"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
-      Title="EditLessonSchedulePage">
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="Просмотр школьных предметов">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="90"/>
+            <RowDefinition Height="65"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="270"/>
         </Grid.RowDefinitions>
-        
-        <Button Name="BtnBack"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Width="100"
-                Height="40"
-                Grid.Row="0"
-                Content="Назад"
-                FontSize="15"
-                Margin="20 40 0 0"
-                Click="BtnBack_Click"></Button>
-        
-        <Button Name="BtnRefresh"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Width="100"
-                Height="40"
-                Content="Обновить"
-                Grid.Row="0"
-                FontSize="15"
-                Margin="0 40 20 0"
-                Click="BtnRefresh_Click"></Button>
-
-        <StackPanel>
-            <TextBlock Margin="5"
-                   Foreground="Gray"
-                   FontSize="25"
-                   FontWeight="Bold" 
+        <TextBlock Text="0/0"
+                   Name="ResultTxb"
+                   FontSize="16"
                    Grid.Row="0"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top">Просмотр школьных предметов
-            </TextBlock>
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="100 0 0 0"/>
+
+        <StackPanel Grid.Row="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBox Name="TxbSearch"
+                     Width="300"
+                     FontSize="15"
+                     Margin="5"
+                     TextChanged="TxbSearch_TextChanged"/>
         </StackPanel>
-       
-            <DataGrid HorizontalAlignment="Center" Name="DgrEditLessons" Grid.Row="1" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="775" Margin="5">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding LessonId}"  Width="*"/>
-                <DataGridTextColumn Header="Название" Binding="{Binding LessonName}"  Width="*"/>
-                <DataGridTextColumn Header="Преподаватель" Binding="{Binding TeacherId}"  Width="0.8*"/>
-               
-            </DataGrid.Columns>
-        </DataGrid>
         
-        <Button Name="BtnAdd"
-                Grid.Row="2" 
-                HorizontalAlignment="Left"
+        <ListView   Margin="5"
+                    Width="625"
+                    Height="275"
+                    x:Name="DgrEditLessons"
+                    Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding LessonId}" Width="100">Номер предмета</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding LessonName}" Width="170">Название предмета</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Teacher.TeacherName}" Width="250">Учитель преподающий предмет</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding TeacherId}" Width="100">Номер учителя</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Vertical" Margin="10">
+            <Button Name="BtnDelete"
                 Width="100"
                 Height="40"
-                Margin="20 0 0 0"
-                Click="BtnAdd_Click">Добавить</Button>
-        <Button Name="BtnDelete"
-                Grid.Row="2"
-                Width="100"
-                Height="40"
-                Margin="0 0 20 0"
-                HorizontalAlignment="Right"
+                Margin="5"
                 Click="BtnDelete_Click">Удалить</Button>
-        <Button Name="BtnEdit"
-                Grid.Row="2" 
-                HorizontalAlignment="Center"
+            <Button Name="BtnEdit"
                 Width="100"
                 Height="40"
-                Margin="20 0 0 0"
+                Margin="5"
                 Click="BtnEdit_Click">Редактировать</Button>
+            <Button Name="BtnRefresh"
+                Width="100"
+                Height="40"
+                Margin="5"
+                Click="BtnRefresh_Click">Обновить</Button>
+            <Button Name="BtnBack"
+                Width="100"
+                Height="40"
+                Margin="5"
+                Click="BtnBack_Click">Назад</Button>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2">
+            <TextBlock Width="395" Margin="5" FontSize="25">Добавление школьного предмета</TextBlock>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Margin="10">Название:</TextBlock>
+                <TextBox Name="TxbName"
+                         Margin="5"
+                         Width="200"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Margin="10">Учитель:</TextBlock>
+                <TextBox Name="TxbTeacher"
+                         Margin="5"
+                         Width="200"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="BtnAddLesson"
+                    Width="150"
+                    Height="30"
+                    Margin="10"
+                    Click="BtnAddLesson_Click">Добавить</Button>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

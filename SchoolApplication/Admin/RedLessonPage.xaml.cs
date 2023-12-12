@@ -24,21 +24,13 @@ namespace SchoolApplication.Admin
         public RedLessonPage()
         {
             InitializeComponent();
-        }
 
-        private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
-        {
-
+            DgrRedLessons.ItemsSource = DbConnect.entObj.Lesson.ToList();
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.GoBack();
-        }
-
-        private void BtnRedProduct_Click(object sender, RoutedEventArgs e)
-        {
-           
         }
 
         private void BtnRedLesson_Click(object sender, RoutedEventArgs e)
@@ -77,6 +69,43 @@ namespace SchoolApplication.Admin
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
                 }
+            }
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var lessonRemoving = DgrRedLessons.SelectedItems.Cast<Lesson>().ToList();
+            try
+            {
+                string message = "Вы хотите удалить выбранный предмет?";
+                var result = MessageBox.Show(message,
+                                            "Уведомление",
+                                            MessageBoxButton.YesNo,
+                                            MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)
+                {
+                    DbConnect.entObj.Lesson.RemoveRange(lessonRemoving);
+                    DbConnect.entObj.SaveChanges();
+
+                    DgrRedLessons.ItemsSource = DbConnect.entObj.Lesson.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                DgrRedLessons.ItemsSource = DbConnect.entObj.Lesson.Where(x => x.LessonName.Contains(TxbSearch.Text)).Take(100).ToList();
+                ResultTxb.Text = DgrRedLessons.Items.Count + "/" + DbConnect.entObj.Lesson.Where(x => x.LessonName.Contains(TxbSearch.Text)).Count().ToString();
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
     }

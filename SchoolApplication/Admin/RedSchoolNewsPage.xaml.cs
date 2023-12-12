@@ -27,7 +27,8 @@ namespace SchoolApplication.Admin
         public RedSchoolNewsPage()
         {
             InitializeComponent();
-         
+
+            DgrRedNews.ItemsSource = DbConnect.entObj.News.ToList();
         }
 
         private void BtnAddImage_Click(object sender, RoutedEventArgs e)
@@ -88,6 +89,43 @@ namespace SchoolApplication.Admin
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
                 }
+            }
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var newsRemoving = DgrRedNews.SelectedItems.Cast<News>().ToList();
+            try
+            {
+                string message = "Вы хотите удалить выбраную новость?";
+                var result = MessageBox.Show(message,
+                                            "Уведомление",
+                                            MessageBoxButton.YesNo,
+                                            MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)
+                {
+                    DbConnect.entObj.News.RemoveRange(newsRemoving);
+                    DbConnect.entObj.SaveChanges();
+
+                    DgrRedNews.ItemsSource = DbConnect.entObj.News.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                DgrRedNews.ItemsSource = DbConnect.entObj.News.Where(x => x.NameNews.Contains(TxbSearch.Text)).Take(100).ToList();
+                ResultTxb.Text = DgrRedNews.Items.Count + "/" + DbConnect.entObj.News.Where(x => x.NameNews.Contains(TxbSearch.Text)).Count().ToString();
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
     }

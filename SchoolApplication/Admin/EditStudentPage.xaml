@@ -5,82 +5,132 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolApplication.Admin"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
-      Title="EditStudentPage">
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="Просмотр учеников" Loaded="Page_Loaded">
 
     <Grid>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="90"/>
+            <RowDefinition Height="65"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="285"/>
         </Grid.RowDefinitions>
-        
-        <Button Name="BtnBack"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Width="100"
-                Height="40"
-                Grid.Row="0"
-                Content="Назад"
-                FontSize="15"
-                Margin="20 40 0 0"
-                Click="BtnBack_Click"></Button>
 
-        <Button Name="BtnRefresh"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Width="100"
-                Height="40"
-                Content="Обновить"
-                Grid.Row="0"
-                FontSize="15"
-                Margin="0 40 20 0"
-                Click="BtnRefresh_Click"></Button>
-
-        <StackPanel>
-            <TextBlock Margin="5"
-                   Foreground="Gray"
-                   FontSize="25"
-                   FontWeight="Bold"
+        <TextBlock Text="0/0"
+                   Name="ResultTxb"
+                   FontSize="16"
                    Grid.Row="0"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top">Просмотр учеников
-            </TextBlock>
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="100 0 0 0"/>
+
+        <StackPanel Grid.Row="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBox Name="TxbSearch"
+                     Width="300"
+                     FontSize="15"
+                     Margin="5"
+                     TextChanged="TxbSearch_TextChanged"/>
+
+            <ComboBox Width="120"
+                      Margin="5"
+                      Name="CmbFilter"
+                      SelectionChanged="CmbFilter_SelectionChanged">
+            </ComboBox>
         </StackPanel>
 
-        <DataGrid HorizontalAlignment="Center" Name="DgrEditStudent" Grid.Row="1" Height="275" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="775" Margin="5">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding UserId}"  Width="0.3*"/>
-                <DataGridTextColumn Header="ФИО" Binding="{Binding UserName}" Width="0.8*"/>
-                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateOfBirth}" Width="0.4*"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="0.5*"/>
-                <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="0.5*"/>
-                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}" Width="0.5*"/>
-                <DataGridTextColumn Header="ClassId" Binding="{Binding ClassId}" Width="0.3*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListView   Margin="5"
+                    Width="950"
+                    Height="255"
+                    x:Name="DgrEditStudent"
+                    Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding UserId}" Width="100">Номер ученика</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding UserName}" Width="180">ФИО</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding DateOfBirth}" Width="150">День рождения</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="130">Email</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Login}" Width="130">Логин</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Password}" Width="75">Пароль</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Class.ClassName}" Width="80">Класс</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding ClassId}" Width="90">Номер класса</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
-        <Button Name="BtnAdd"
-                Grid.Row="2" 
-                HorizontalAlignment="Left"
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Vertical" Margin="10">
+            <Button Name="BtnDelete"
                 Width="100"
                 Height="40"
-                Margin="20 0 0 0"
-                Click="BtnAdd_Click">Добавить</Button>
-        <Button Name="BtnDelete"
-                Grid.Row="2"
-                Width="100"
-                Height="40"
-                Margin="0 0 20 0"
-                HorizontalAlignment="Right"
+                Margin="5"
                 Click="BtnDelete_Click">Удалить</Button>
-        <Button Name="BtnEdit"
-                Grid.Row="2" 
-                HorizontalAlignment="Center"
+            <Button Name="BtnEdit"
                 Width="100"
                 Height="40"
-                Margin="20 0 0 0"
+                Margin="5"
                 Click="BtnEdit_Click">Редактировать</Button>
+            <Button Name="BtnRefresh"
+                Width="100"
+                Height="40"
+                Margin="5"
+                Click="BtnRefresh_Click">Обновить</Button>
+            <Button Name="BtnBack"
+                Width="100"
+                Height="40"
+                Margin="5"
+                Click="BtnBack_Click">Назад</Button>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2">
+            <TextBlock Width="395" Margin="5" FontSize="25">Добавление студента</TextBlock>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Margin="10">ФИО:</TextBlock>
+                <TextBox Name="TxbName"
+                         Margin="5"
+                         Width="200"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Margin="10">Дата рождения:</TextBlock>
+                <TextBox Name="TxbDateOfBirth"
+                         Margin="5"
+                         Width="200"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Margin="10">Email:</TextBlock>
+                <TextBox Name="TxbEmail"
+                         Margin="5"
+                         Width="200"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Margin="10">Логин:</TextBlock>
+                <TextBox Name="TxbLogin"
+                         Margin="5"
+                         Width="200"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Margin="10">Пароль:</TextBlock>
+                <TextBox Name="TxbPassword"
+                         Margin="5"
+                         Width="200"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Margin="10">ClassId:</TextBlock>
+                <TextBox Name="TxbClass"
+                         Margin="5"
+                         Width="200"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="BtnAddStudent"
+                    Width="150"
+                    Margin="5"
+                    Click="BtnAddStudent_Click">Добавить</Button>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

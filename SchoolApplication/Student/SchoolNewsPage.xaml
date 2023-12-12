@@ -5,50 +5,73 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolApplication.Student"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
-      Title="SchoolNewsPage">
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="Новости школы">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="0/0"
+                   Name="ResultTxb"
+                   FontSize="16"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="100 0 0 0"/>
+
+        <StackPanel Grid.Row="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBox Name="TxbSearch"
+                     Width="300"
+                     FontSize="15"
+                     Margin="5"
+                     TextChanged="TxbSearch_TextChanged"/>
+        </StackPanel>
+
+        <ListView   Margin="5"
+                    Width="895"
+                    Height="400"
+                    x:Name="DgrNews"
+                    Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="175"  Header="Название новости">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding NameNews}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="140">Дата публикации</GridViewColumn>
+                    <GridViewColumn Width="430"  Header="Текст">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding Text}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Фотография" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Image}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
         <Button Name="BtnBack"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
+                VerticalAlignment="Bottom"
+                Grid.Row="1"
                 Width="100"
                 Height="40"
                 Content="Назад"
                 FontSize="15"
-                Margin="20 40 0 0"
+                Margin="20 0 0 20"
                 Click="BtnBack_Click"></Button>
-
-        <StackPanel>
-            <TextBlock Margin="5"
-                   Foreground="Gray"
-                   FontSize="25"
-                   FontWeight="Bold"                      
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top">Новости школы
-            </TextBlock>
-        </StackPanel>
-
-        <DataGrid HorizontalAlignment="Center" Name="DgrNews" Height="285" AutoGenerateColumns="False" IsReadOnly="True"  VerticalAlignment="Center" Width="790" Margin="5">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="0.3*"/>
-                <DataGridTextColumn Header="Название" Binding="{Binding NameNews}" Width="0.7*"/>
-                <DataGridTextColumn Header="Текст" Binding="{Binding Text}" Width="*">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style>
-                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-
-                 <DataGridTemplateColumn Width="0.8*" Header="Фотография">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Image}"></Image>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
     </Grid>
 </Page>

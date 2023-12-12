@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using Microsoft.Win32;
 using SchoolApplication.AppFiles;
 using System;
 using System.Collections.Generic;
@@ -41,11 +42,6 @@ namespace SchoolApplication.Admin
             DgrEditNews.ItemsSource = DbConnect.entObj.News.ToList();
         }
 
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            FrameApp.frmObj.Navigate(new Admin.AddSchoolNewsPage());
-        }
-
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             var newsRemoving = DgrEditNews.SelectedItems.Cast<News>().ToList();
@@ -73,6 +69,75 @@ namespace SchoolApplication.Admin
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.Navigate(new Admin.RedSchoolNewsPage());
+        }
+
+        private void BtnAddImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files|*.bmp;*.jpg;*.jpeg;*png;*tif|All files|*.*";
+            openFileDialog.FilterIndex = 1;
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Uri imageUri = new Uri(openFileDialog.FileName);
+                ImgNews.Source = new BitmapImage(imageUri);
+            }
+        }
+
+        private void BtnAddSchoolNews_Click(object sender, RoutedEventArgs e)
+        {
+            if (TxbDate.Text == null | TxbDate.Text.Trim() == "" |
+                TxbName.Text == null | TxbName.Text.Trim() == "" |
+                TxbText.Text == null | TxbText.Text.Trim() == "")
+            {
+                MessageBox.Show("Заполните все поля!",
+                                "Уведомление",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+            }
+            else
+            {
+                try
+                {
+                    News newsObj = new News()
+                    {
+                        NameNews = TxbName.Text,
+                        Date = Convert.ToDateTime(TxbDate.Text),
+                        Text = TxbText.Text,
+                        Image = ImgNews.Source.ToString()
+                    };
+
+                    DbConnect.entObj.News.Add(newsObj);
+                    DbConnect.entObj.SaveChanges();
+
+                    MessageBox.Show("Новость создана",
+                                    "Уведомление",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Information);
+
+                    FrameApp.frmObj.GoBack();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка работы приложения: " + ex.Message.ToString(),
+                                    "Критический сбой работы приложения",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Warning);
+                }
+            }
+        }
+
+        private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                DgrEditNews.ItemsSource = DbConnect.entObj.News.Where(x => x.NameNews.Contains(TxbSearch.Text)).Take(100).ToList();
+                ResultTxb.Text = DgrEditNews.Items.Count + "/" + DbConnect.entObj.News.Where(x => x.NameNews.Contains(TxbSearch.Text)).Count().ToString();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }
