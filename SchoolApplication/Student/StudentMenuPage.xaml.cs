@@ -24,9 +24,13 @@ namespace SchoolApplication.Student
         public object Left { get; internal set; }
         public object Top { get; internal set; }
 
-        public StudentMenuPage()
+        public StudentMenuPage(string name, string date, string classn)
         {
             InitializeComponent();
+
+            LbName.Content += name;
+            LbDate.Content += date;
+            LbClass.Content += classn;
         }
 
         private void BtnListOfLesson_Click(object sender, RoutedEventArgs e)

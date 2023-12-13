@@ -45,8 +45,10 @@ namespace SchoolApplication
                             "Уведомление",
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
-
-                        FrameApp.frmObj.Navigate(new Student.StudentMenuPage());
+                        string name = userObj.UserName;
+                        string date = Convert.ToString(userObj.DateOfBirth);
+                        string classn = Convert.ToString(userObj.ClassId);
+                        FrameApp.frmObj.Navigate(new Student.StudentMenuPage(name, date, classn));
                         break;
 
                     case 2:
@@ -56,6 +58,15 @@ namespace SchoolApplication
                             MessageBoxImage.Information);
 
                         FrameApp.frmObj.Navigate(new Admin.AdminMenuPage());
+                        break;
+
+                    case 3:
+                        MessageBox.Show("Здравствуйте, директор " + userObj.UserName,
+                            "Уведомление",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
+
+                        FrameApp.frmObj.Navigate(new Director.DirectorMenuPage());
                         break;
                 }
             }
