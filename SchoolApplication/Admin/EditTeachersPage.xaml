@@ -36,20 +36,31 @@
                     Height="255"
                     x:Name="DgrEditTeachers"
                     Grid.Row="1">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding TeacherId}" Width="100">Номер учителя</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding TeacherName}" Width="220">ФИО</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding DateOfBirth}" Width="150">День рождения</GridViewColumn>
-                    <GridViewColumn Header="Фотография" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Image}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Номер: "/>
+                                <TextBlock Text="{Binding TeacherId}" Margin="5"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="ФИО: "/>
+                                <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding TeacherName}" Margin="5"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Width="230">
+                                <Label Content="Дата рождения: "/>
+                                <TextBlock Text="{Binding DateOfBirth}" Width="55" Margin="6"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <Image Height="200"
+                                 Width="225"
+                                 Source="{Binding Image}"></Image>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
         <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Vertical" Margin="10">

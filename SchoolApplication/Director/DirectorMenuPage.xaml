@@ -1,0 +1,29 @@
+﻿<Page x:Class="SchoolApplication.Director.DirectorMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SchoolApplication.Director"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="Меню директора">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Button Name="BtnViewStudent" Grid.Column="0" Grid.Row="0" Width="190" Height="40" Content="Просмотр пользователя" Click="BtnViewStudent_Click"/>
+        <Button Name="BtnViewTeacher" Grid.Column="0" Grid.Row="1" Width="170" Height="40" Content="Просмотр учителя" Click="BtnViewTeacher_Click"/>
+        <Button Name="BtnViewLesson" Grid.Column="0" Grid.Row="2" Width="190" Height="40" Content="Просмотр школьных предметов" Click="BtnViewLesson_Click"/>
+        <Button Name="BtnViewSchoolNews" Grid.Column="1" Grid.Row="0" Width="200" Height="40" Content="Просмотр новостей школы" Click="BtnViewSchoolNews_Click"/>
+        <Button Name="BtnExit" Grid.Column="1" Grid.Row="1" Width="130" Height="40" Content="Выйти из аккаунта" Click="BtnExit_Click"/>
+    </Grid>
+</Page>

@@ -35,32 +35,27 @@
                     Height="400"
                     x:Name="DgrNews"
                     Grid.Row="1">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="175"  Header="Название новости">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                     <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
                                 <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding NameNews}"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="140">Дата публикации</GridViewColumn>
-                    <GridViewColumn Width="430"  Header="Текст">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding Text}"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Фотография" Width="150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Image}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
+                                <Label Content=" | "/>
+                                <TextBlock Text="{Binding Date}" Width="55"></TextBlock>
+                            </StackPanel>
+                             <StackPanel Width="500">
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Text}"></TextBlock>
+                             </StackPanel>
+                        </StackPanel>
+                          <StackPanel>
+                              <Image Height="200"
+                                 Width="225"
+                                 Source="{Binding Image}"></Image>
+                          </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
         <Button Name="BtnBack"

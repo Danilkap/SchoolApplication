@@ -154,6 +154,21 @@
     <Compile Include="AppFiles\Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Director\DirectorMenuPage.xaml.cs">
+      <DependentUpon>DirectorMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Director\LessonPage.xaml.cs">
+      <DependentUpon>LessonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Director\SchoolNewsPage.xaml.cs">
+      <DependentUpon>SchoolNewsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Director\StudentPage.xaml.cs">
+      <DependentUpon>StudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Director\TeachersPage.xaml.cs">
+      <DependentUpon>TeachersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Student\ListOfLessonPage.xaml.cs">
       <DependentUpon>ListOfLessonPage.xaml</DependentUpon>
     </Compile>
@@ -212,6 +227,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AuthorizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Director\DirectorMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Director\LessonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Director\SchoolNewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Director\StudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Director\TeachersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

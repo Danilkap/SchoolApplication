@@ -14,13 +14,19 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Background="Brown" Orientation="Vertical" Grid.ColumnSpan="2">
-            <StackPanel HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="{Binding Content.Title, ElementName=MainFrame}"
                            FontSize="30" 
                            FontWeight="Bold"
+                           Margin="5"
                            Foreground="White"></TextBlock>
             </StackPanel>
         </StackPanel>
+         <StackPanel HorizontalAlignment="Left">
+                <Image Source="Icon.png" 
+                       Width="80"
+                       Height="60"></Image>
+          </StackPanel>
 
         <Frame x:Name="MainFrame"
                Grid.Row="1" 

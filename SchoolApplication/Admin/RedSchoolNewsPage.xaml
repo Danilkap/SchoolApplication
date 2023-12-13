@@ -36,33 +36,34 @@
                     Height="300"
                     x:Name="DgrRedNews"
                     Grid.Row="1">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding NewsId}" Width="90">Номер новости</GridViewColumn>
-                    <GridViewColumn Width="175"  Header="Название новости">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding NameNews}"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="140">Дата публикации</GridViewColumn>
-                    <GridViewColumn Width="430"  Header="Текст">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding Text}"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Фотография" Width="150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Image}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Номер новости: "/>
+                                    <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding NewsId}" Margin="5"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Название: "/>
+                                    <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding NameNews}" Margin="5"></TextBlock>
+                                    <Label Content=" |  Дата: "/>
+                                    <TextBlock Text="{Binding Date}" Width="55" Margin="6"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Width="500">
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Text}"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <Image Height="200"
+                                 Width="225"
+                                 Source="{Binding Image}"></Image>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2">
