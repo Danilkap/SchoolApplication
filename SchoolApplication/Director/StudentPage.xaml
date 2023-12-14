@@ -6,13 +6,35 @@
       xmlns:local="clr-namespace:SchoolApplication.Director"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="1000"
-      Title="Список учеников">
+      Title="Список учеников" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="65"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <TextBlock Text="0/0"
+                   Name="ResultTxb"
+                   FontSize="16"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="200 0 0 0"/>
+
+        <StackPanel Grid.Row="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBox Name="TxbSearch"
+                     Width="300"
+                     FontSize="15"
+                     Margin="5"
+                     TextChanged="TxbSearch_TextChanged"/>
+
+            <ComboBox Width="120"
+                      Margin="5"
+                      Name="CmbFilter"
+                      SelectionChanged="CmbFilter_SelectionChanged">
+            </ComboBox>
+        </StackPanel>
 
         <ListView   Margin="5"
                     Width="950"

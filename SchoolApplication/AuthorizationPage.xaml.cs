@@ -47,7 +47,7 @@ namespace SchoolApplication
                             MessageBoxImage.Information);
                         string name = userObj.UserName;
                         string date = Convert.ToString(userObj.DateOfBirth);
-                        string classn = Convert.ToString(userObj.ClassId);
+                        string classn = Convert.ToString(userObj.Class.ClassName);
                         FrameApp.frmObj.Navigate(new Student.StudentMenuPage(name, date, classn));
                         break;
 
@@ -65,8 +65,10 @@ namespace SchoolApplication
                             "Уведомление",
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
+                        string named = userObj.UserName;
+                        string dated = Convert.ToString(userObj.DateOfBirth);
 
-                        FrameApp.frmObj.Navigate(new Director.DirectorMenuPage());
+                        FrameApp.frmObj.Navigate(new Director.DirectorMenuPage(named, dated));
                         break;
                 }
             }

@@ -20,9 +20,12 @@ namespace SchoolApplication.Director
     /// </summary>
     public partial class DirectorMenuPage : Page
     {
-        public DirectorMenuPage()
+        public DirectorMenuPage(string named, string dated)
         {
             InitializeComponent();
+
+            LbName.Content += named;
+            LbDate.Content += dated;
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
