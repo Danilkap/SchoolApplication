@@ -57,7 +57,8 @@ namespace SchoolApplication.Admin
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);
 
-                    FrameApp.frmObj.GoBack();
+                    DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+                    DgrRedTeachers.ItemsSource = DbConnect.entObj.Teacher.ToList();
                 }
                 catch (Exception ex)
                 {

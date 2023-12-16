@@ -60,7 +60,8 @@ namespace SchoolApplication.Admin
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);
 
-                    FrameApp.frmObj.GoBack();
+                    DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+                    DgrRedLessons.ItemsSource = DbConnect.entObj.Lesson.ToList();
                 }
                 catch (Exception ex)
                 {

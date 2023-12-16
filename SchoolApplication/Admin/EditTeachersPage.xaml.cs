@@ -34,12 +34,6 @@ namespace SchoolApplication.Admin
             FrameApp.frmObj.GoBack();
         }
 
-        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
-            DgrEditTeachers.ItemsSource = DbConnect.entObj.Teacher.ToList();
-        }
-
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.Navigate(new Admin.RedTeachersPage());
@@ -111,7 +105,8 @@ namespace SchoolApplication.Admin
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);
 
-                    FrameApp.frmObj.GoBack();
+                    DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+                    DgrEditTeachers.ItemsSource = DbConnect.entObj.Teacher.ToList();
                 }
                 catch (Exception ex)
                 {

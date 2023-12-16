@@ -72,16 +72,11 @@
                 Height="40"
                 Margin="5"
                 Click="BtnDelete_Click">Удалить</Button>
-        <Button Name="BtnEdit"
+            <Button Name="BtnEdit"
                 Width="100"
                 Height="40"
                 Margin="5"
                 Click="BtnEdit_Click">Редактировать</Button>
-        <Button Name="BtnRefresh"
-                Width="100"
-                Height="40"
-                Margin="5"
-                Click="BtnRefresh_Click">Обновить</Button>
             <Button Name="BtnBack"
                 Width="100"
                 Height="40"

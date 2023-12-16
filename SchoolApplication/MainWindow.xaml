@@ -13,7 +13,13 @@
             <RowDefinition Height="45"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Background="Brown" Orientation="Vertical" Grid.ColumnSpan="2">
+        <StackPanel Grid.Row="0" Orientation="Vertical" Grid.ColumnSpan="2">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Brown" Offset="0"/>
+                    <GradientStop Color="#FFE76B26" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="{Binding Content.Title, ElementName=MainFrame}"
                            FontSize="30" 
@@ -22,17 +28,23 @@
                            Foreground="White"></TextBlock>
             </StackPanel>
         </StackPanel>
-         <StackPanel HorizontalAlignment="Left">
-                <Image Source="Icon.png" 
+        <StackPanel HorizontalAlignment="Left">
+            <Image Source="Icon.png" 
                        Width="80"
                        Height="60"></Image>
-          </StackPanel>
+        </StackPanel>
 
         <Frame x:Name="MainFrame"
                Grid.Row="1" 
                NavigationUIVisibility="Hidden" Grid.ColumnSpan="2"/>
 
-        <StackPanel Grid.Row="2" Background="BurlyWood" Grid.ColumnSpan="2">
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="BurlyWood" Offset="0"/>
+                    <GradientStop Color="#FFFFFC9E" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
             <TextBlock 
                        Foreground="#FF2B2B2B" 
                        HorizontalAlignment="Center"

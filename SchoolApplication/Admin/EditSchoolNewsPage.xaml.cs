@@ -36,12 +36,6 @@ namespace SchoolApplication.Admin
             FrameApp.frmObj.GoBack();
         }
        
-        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
-            DgrEditNews.ItemsSource = DbConnect.entObj.News.ToList();
-        }
-
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             var newsRemoving = DgrEditNews.SelectedItems.Cast<News>().ToList();
@@ -115,7 +109,8 @@ namespace SchoolApplication.Admin
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);
 
-                    FrameApp.frmObj.GoBack();
+                    DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+                    DgrEditNews.ItemsSource = DbConnect.entObj.News.ToList();
                 }
                 catch (Exception ex)
                 {
