@@ -109,16 +109,34 @@
                 <Button Name="BtnRedNews"
                     Width="150"
                     Margin="5"
-                    Click="BtnRedNews_Click">Редактировать</Button>
+                    Click="BtnRedNews_Click">Редактировать
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
                 <Button Name="BtnDelete"
                     Width="100"
                     Margin="5"
-                    Click="BtnDelete_Click">Удалить</Button>
+                    Click="BtnDelete_Click">Удалить
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
                 <Button Name="BtnBack"
                     Width="100"
                     Height="40"
                     Margin="5"
-                    Click="BtnBack_Click">Назад</Button>
+                    Click="BtnBack_Click">Назад
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="2">

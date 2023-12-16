@@ -50,17 +50,35 @@
                 Width="100"
                 Height="40"
                 Margin="5"
-                Click="BtnDelete_Click">Удалить</Button>
+                Click="BtnDelete_Click">Удалить
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button Name="BtnEdit"
                 Width="100"
                 Height="40"
                 Margin="5"
-                Click="BtnEdit_Click">Редактировать</Button>
+                Click="BtnEdit_Click">Редактировать
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button Name="BtnBack"
                 Width="100"
                 Height="40"
                 Margin="5"
-                Click="BtnBack_Click">Назад</Button>
+                Click="BtnBack_Click">Назад
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2">
@@ -86,7 +104,13 @@
                     Width="150"
                     Height="30"
                     Margin="10"
-                    Click="BtnAddLesson_Click">Добавить</Button>
+                    Click="BtnAddLesson_Click">Добавить
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </StackPanel>
         </StackPanel>
     </Grid>
