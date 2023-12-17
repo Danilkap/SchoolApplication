@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SchoolApplication.Admin"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="1000"
-      Title="Редактирование учителей">
+      Title="Редактирование учителей" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>

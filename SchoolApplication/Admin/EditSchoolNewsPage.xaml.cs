@@ -82,7 +82,7 @@ namespace SchoolApplication.Admin
         {
             if (TxbDate.Text == null | TxbDate.Text.Trim() == "" |
                 TxbName.Text == null | TxbName.Text.Trim() == "" |
-                TxbText.Text == null | TxbText.Text.Trim() == "")
+                TxbText.Text== null | TxbText.Text.Trim() == "")
             {
                 MessageBox.Show("Заполните все поля!",
                                 "Уведомление",
@@ -133,6 +133,12 @@ namespace SchoolApplication.Admin
             {
                 throw;
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+            DgrEditNews.ItemsSource = DbConnect.entObj.News.ToList();
         }
     }
 }

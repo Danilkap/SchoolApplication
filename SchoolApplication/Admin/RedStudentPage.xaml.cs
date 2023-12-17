@@ -137,6 +137,9 @@ namespace SchoolApplication.Admin
 
                 DgrRedStudent.ItemsSource = DbConnect.entObj.User.Take(100).ToList();
                 ResultTxb.Text = DgrRedStudent.Items.Count + "/" + DbConnect.entObj.User.Count().ToString();
+
+                DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+                DgrRedStudent.ItemsSource = DbConnect.entObj.User.ToList();
             }
             catch (Exception except)
             {

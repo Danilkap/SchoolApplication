@@ -124,5 +124,11 @@ namespace SchoolApplication.Admin
                 throw;
             }
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            DbConnect.entObj.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+            DgrRedTeachers.ItemsSource = DbConnect.entObj.Teacher.ToList();
+        }
     }
 }
