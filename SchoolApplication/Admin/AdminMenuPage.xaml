@@ -20,10 +20,40 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Button Name="BtnViewStudent" Grid.Column="0" Grid.Row="0" Width="190" Height="40" Content="Просмотр пользователя" Click="BtnViewStudent_Click"/>
-        <Button Name="BtnViewTeacher" Grid.Column="0" Grid.Row="1" Width="170" Height="40" Content="Просмотр учителя" Click="BtnViewTeacher_Click"/>
-        <Button Name="BtnViewLesson" Grid.Column="0" Grid.Row="2" Width="190" Height="40" Content="Просмотр школьных предметов" Click="BtnViewLesson_Click"/>
-        <Button Name="BtnViewSchoolNews" Grid.Column="1" Grid.Row="0" Width="200" Height="40" Content="Просмотр новостей школы" Click="BtnViewSchoolNews_Click"/>
-        <Button Name="BtnExit" Grid.Column="1" Grid.Row="1" Width="130" Height="40" Content="Выйти из аккаунта" Click="BtnExit_Click"/>
+        <Button Name="BtnViewStudent" Grid.Column="0" Grid.Row="0" Width="190" Height="40" Content="Просмотр пользователей" Click="BtnViewStudent_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Name="BtnViewTeacher" Grid.Column="0" Grid.Row="1" Width="170" Height="40" Content="Просмотр учителей" Click="BtnViewTeacher_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Name="BtnViewLesson" Grid.Column="0" Grid.Row="2" Width="190" Height="40" Content="Просмотр школьных предметов" Click="BtnViewLesson_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Name="BtnViewSchoolNews" Grid.Column="1" Grid.Row="0" Width="200" Height="40" Content="Просмотр новостей школы" Click="BtnViewSchoolNews_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Name="BtnExit" Grid.Column="1" Grid.Row="1" Width="130" Height="40" Content="Выйти из аккаунта" Click="BtnExit_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Page>

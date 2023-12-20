@@ -51,6 +51,12 @@
                 Content="Назад"
                 FontSize="15"
                 Margin="20 0 0 20"
-                Click="BtnBack_Click"></Button>
+                Click="BtnBack_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Page>

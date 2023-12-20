@@ -21,25 +21,49 @@
                       Height="40"
                       FontSize="15"
                       Margin="10"
-                      Click="BtnTeasherStaff_Click">Преподавательский состав</Button>
+                      Click="BtnTeasherStaff_Click">Преподавательский состав
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button Name="BtnListOfLesson"
                       Width="205"
                       Height="40"
                       FontSize="15"
                        Margin="10"
-                      Click="BtnListOfLesson_Click">Школьные предметы</Button>  
+                      Click="BtnListOfLesson_Click">Школьные предметы
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>  
               <Button Name="BtnSchoolNews"
                       Width="205"
                       Height="40"
                       FontSize="15"
                       Margin="10"
-                      Click="BtnSchoolNews_Click">Школьные новости</Button>
+                      Click="BtnSchoolNews_Click">Школьные новости
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
               <Button Name="BtnExit"
                       Width="205"
                       Height="40"
                       FontSize="15"
                       Margin="10"
-                      Click="BtnExit_Click">Выйти из аккаунта</Button>
+                      Click="BtnExit_Click">Выйти из аккаунта
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Page>

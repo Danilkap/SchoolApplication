@@ -26,6 +26,7 @@ namespace SchoolApplication.Admin
             InitializeComponent();
 
             DgrRedLessons.ItemsSource = DbConnect.entObj.Lesson.ToList();
+
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

@@ -67,7 +67,13 @@
                     Width="100"
                     Height="40"
                     Margin="5"
-                    Click="BtnBack_Click">Назад</Button>
+                    Click="BtnBack_Click">Назад
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Page>
